@@ -1,15 +1,15 @@
-import React from 'react';
-import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
+import ContactContent from '../components/Contact';
+import Footer from '../components/Footer';
 
 const Contact = () => {
 	return (
-		<>
-			<Navbar/>
-
-			<Footer/>
-		</>
+		<div className="flex flex-col h-screen justify-between text-center">
+			<Navbar />
+			<ContactContent />
+			<Footer />
+		</div>
 	);
-}
+};
 
 export default Contact;

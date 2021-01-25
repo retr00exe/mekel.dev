@@ -1,27 +1,41 @@
-import React from 'react';
-import Head from 'next/head'
-import Link from 'next/link'
-import styled from 'styled-components' 
+import Link from 'next/link';
+import styled from 'styled-components';
 
 const Navbar = () => {
 	return (
 		<NavbarItems>
-			<NavLogo><Link href="/"><a>MKL.</a></Link></NavLogo>
+			<NavLogo>
+				<Link href="/">
+					<a>MKL.</a>
+				</Link>
+			</NavLogo>
 			<NavLinks>
-				<NavLink><Link href="/"><a>Home</a></Link></NavLink>
-				<NavLink><Link href="/about"><a>About</a></Link></NavLink>
-				<NavLink><Link href="/contact"><a>Contact</a></Link></NavLink>
+				<NavLink>
+					<Link href="/">
+						<a>Home</a>
+					</Link>
+				</NavLink>
+				<NavLink>
+					<Link href="/about">
+						<a>About</a>
+					</Link>
+				</NavLink>
+				<NavLink>
+					<Link href="/contact">
+						<a>Contact</a>
+					</Link>
+				</NavLink>
 			</NavLinks>
 		</NavbarItems>
 	);
-}
+};
 
 const NavbarItems = styled.nav.attrs({
-	className: "mx-auto lg:w-3/5 lg:flex lg:flex-row lg:h-auto"
+	className: 'mx-auto lg:w-3/5 lg:flex lg:flex-row lg:h-auto',
 })`
 	display: flex;
 	align-items: center;
-`
+`;
 
 const NavLogo = styled.div`
 	box-sizing: border-box;
@@ -36,25 +50,25 @@ const NavLogo = styled.div`
 	&:hover {
 		background-color: #e200e2;
 	}
-`
+`;
 
 const NavLinks = styled.ul`
 	margin-left: auto;
 	display: flex;
-`
+`;
 
 const NavLink = styled.li`
 	display: inline-block;
 	font-size: 0.9rem;
 	padding: 1rem;
 	font-weight: 400;
-	&:nth-child(1){
-		color:magenta;
+	&:nth-child(1) {
+		color: magenta;
 		font-weight: 600;
 	}
 	&:hover {
-		color:magenta;
+		color: magenta;
 	}
-`
+`;
 
 export default Navbar;

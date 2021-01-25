@@ -1,16 +1,17 @@
-import React from 'react';
 import Footer from '../components/Footer';
 import AboutContent from '../components/About';
 import Navbar from '../components/Navbar';
 
 const About = () => {
 	return (
-		<>
-			<Navbar/>
-			<AboutContent />
-			<Footer fixed/>
-		</>
+		<div className="flex flex-col h-screen justify-between">
+			<Navbar />
+			<div className="bg-gray-100">
+				<AboutContent />
+			</div>
+			<Footer />
+		</div>
 	);
-}
+};
 
 export default About;
