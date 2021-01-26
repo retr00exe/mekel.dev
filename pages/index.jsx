@@ -14,6 +14,7 @@ export default class Home extends Component {
 	}
 
 	render() {
+		console.log(this.props.posts);
 		return (
 			<div className="flex flex-col h-screen">
 				<Head>
@@ -21,7 +22,14 @@ export default class Home extends Component {
 					<link rel="icon" href="/favicon.ico" />
 				</Head>
 				<Navbar />
-				<Cards data={this.props} />
+				<div className="bg-gray-100 pb-16">
+					<h1 className="mt-20 text-center text-2xl font-bold text-gray-800">
+						My Posts
+					</h1>
+					{this.props.posts.map((post) => (
+						<Cards post={post} key={post._id} />
+					))}
+				</div>
 				<Footer />
 			</div>
 		);
