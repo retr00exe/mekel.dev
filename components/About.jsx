@@ -24,7 +24,7 @@ class AboutContent extends Component {
 						skills: this.skills,
 						contact: this.contact,
 					}}
-					descriptions={{
+					description={{
 						about: 'about Me',
 						education: 'my Education',
 						skills: 'my Skills',
