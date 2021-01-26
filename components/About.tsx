@@ -38,7 +38,7 @@ class AboutContent extends Component {
 }
 
 const AboutWrapper = styled.div.attrs({
-	className: 'mx-auto py-10 lg:flex lg:flex-col lg:h-auto ',
+	className: 'mx-auto py-20 lg:flex lg:flex-col lg:h-auto',
 })`
 	width: 800px;
 `;

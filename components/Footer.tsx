@@ -20,13 +20,16 @@ const Footer = () => {
 };
 
 const FooterWrapper = styled.footer`
-	max-width: 800px;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
 	margin: 0 auto;
 	font-size: 0.75rem;
-	display: flex;
-	justify-content: center;
+	text-align: center;
+	background-color: #fff;
 	.footer-container {
-		padding: 0.75rem;
+		padding: 0.5rem;
 	}
 	p {
 		a {

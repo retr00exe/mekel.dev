@@ -1,14 +1,9 @@
-import React from 'react';
-import styled from 'styled-components'
-
 const Contact = () => {
 	return (
-		<div>
+		<div className="py-16 bg-gray-100">
 			<h1>Hello</h1>
 		</div>
 	);
-}
-
-const ContactWrapper = styled.div``
+};
 
 export default Contact;
