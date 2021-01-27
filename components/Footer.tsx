@@ -3,18 +3,16 @@ import styled from 'styled-components';
 const Footer = () => {
 	return (
 		<FooterWrapper>
-			<div className="footer-container">
-				<p>
-					Made with ❤️ using{' '}
-					<a href="https://nextjs.org/" target="_blank">
-						Next.js
-					</a>{' '}
-					&{' '}
-					<a href="https://strapi.io/" target="_blank">
-						Strapi
-					</a>
-				</p>
-			</div>
+			<p>
+				Made with ❤️ using{' '}
+				<a href="https://nextjs.org/" target="_blank" rel="noopener">
+					Next.js
+				</a>{' '}
+				&{' '}
+				<a href="https://strapi.io/" target="_blank" rel="noopener">
+					Strapi
+				</a>
+			</p>
 		</FooterWrapper>
 	);
 };
@@ -28,9 +26,6 @@ const FooterWrapper = styled.footer`
 	font-size: 0.75rem;
 	text-align: center;
 	background-color: #fff;
-	.footer-container {
-		padding: 0.5rem;
-	}
 	p {
 		a {
 			text-decoration: underline;

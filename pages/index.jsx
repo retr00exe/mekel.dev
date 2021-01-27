@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import Head from 'next/head';
+import styled from 'styled-components';
 import Navbar from '../components/Navbar';
 import Cards from '../components/Cards';
 import Footer from '../components/Footer';
 
 export default class Home extends Component {
 	static async getInitialProps() {
-		const res = await fetch(`https://strapi-backend-01.herokuapp.com/posts`);
+		const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/posts`);
 		const data = await res.json();
 		return {
 			posts: data,
@@ -14,24 +15,35 @@ export default class Home extends Component {
 	}
 
 	render() {
-		console.log(this.props.posts);
 		return (
-			<div className="flex flex-col h-screen">
+			<>
 				<Head>
 					<title>Home</title>
 					<link rel="icon" href="/favicon.ico" />
+					<meta name="viewport" content="width=device-width, initial-scale=1" />
 				</Head>
 				<Navbar />
-				<div className="bg-gray-100 pb-16">
-					<h1 className="mt-20 text-center text-2xl font-bold text-gray-800">
-						My Posts
-					</h1>
+				<ContentWrapper>
+					<h1>My Posts</h1>
 					{this.props.posts.map((post) => (
 						<Cards post={post} key={post._id} />
 					))}
-				</div>
+				</ContentWrapper>
 				<Footer />
-			</div>
+			</>
 		);
 	}
 }
+
+const ContentWrapper = styled.div`
+	background-color: rgba(243, 244, 246, 1);
+	padding-bottom: 4rem;
+	h1 {
+		padding-top: 5rem;
+		text-align: center;
+		font-size: 1.5rem;
+		line-height: 2rem;
+		font-weight: 700;
+		color: rgba(31, 41, 55, 1);
+	}
+`;

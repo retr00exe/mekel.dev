@@ -1,44 +1,108 @@
+import Image from 'next/image';
+import styled from 'styled-components';
 import { sliceText } from '../utils/card';
 
 const Cards = ({ post }) => {
-	console.log(post);
 	return (
-		<div className="px-8 py-4">
-			<div className="mx-auto lg:w-3/5 lg:flex lg:flex-row lg:h-auto shadow-sm">
-				<img
+		<CardWrapper>
+			<div className="card-container">
+				<Image
 					src={post.cover.url}
-					alt=""
-					className="rounded-tr-md rounded-tl-md h-48 w-full lg:h-auto lg:w-2/5 lg:rounded-bl-md lg:rounded-tr-none"
-					style={{ objectFit: 'cover' }}
+					alt="Hello"
+					width={500}
+					height={400}
+					className="cover-image"
 				/>
-				<div className="bg-white p-6 rounded-bl-md rounded-br-md flex flex-col justify-between lg:rounded-bl-none lg:rounded-tr-md">
-					<div>
-						<h2 className="text-gray-700 font-semibold text-xl">
-							{post.title}
-						</h2>
-						<p className="text-sm text-gray-600 mt-4">
-							{sliceText(post.content, 120)}
-						</p>
+				<div className="card-content">
+					<div className="content-header">
+						<h2>{post.title}</h2>
+						<p>{sliceText(post.content, 120)}</p>
 					</div>
-					<div className="flex items-center mt-4">
-						<div className="flex items-center">
-							<img
-								src="https://avatars.githubusercontent.com/u/55347344?s=460&u=f5b39bf3ba4461a448a4ea15d6bd28fc6b7b4337&v=4"
-								alt=""
-								className="h-10 w-10 rounded-full"
-							/>
-							<div className="ml-4">
-								<p className="text-gray-800 text-sm font-semibold">
-									Mekel Ilyasa
-								</p>
-								<p className="text-gray-600 text-sm">28 Jun 2020</p>
-							</div>
+					<div className="content-footer">
+						<Image
+							src="https://avatars.githubusercontent.com/u/55347344?s=460&u=f5b39bf3ba4461a448a4ea15d6bd28fc6b7b4337&v=4"
+							alt=""
+							width={50}
+							height={50}
+							className="profile-image"
+						/>
+						<div className="content-profile">
+							<p id="author">Mekel Ilyasa</p>
+							<p id="date">28 Jun 2020</p>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
+		</CardWrapper>
 	);
 };
+
+const CardWrapper = styled.div`
+	padding: 1rem 2rem;
+	.card-container {
+		margin: 0 auto;
+		box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+			0 2px 4px -1px rgba(0, 0, 0, 0.06);
+		border-radius: 0.75rem;
+		@media (min-width: 1024px) {
+			width: 60%;
+			height: auto;
+			display: flex;
+			flex-direction: row;
+		}
+		.cover-image {
+			object-fit: cover;
+			border-radius: 0.75rem 0 0 0.75rem;
+		}
+		.card-content {
+			background: #fff;
+			padding: 1.5rem;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			border-radius: 0 0.75rem 0.75rem 0;
+			@media (min-width: 1024px) {
+				border-radius: 0 0.75rem 0.75rem 0;
+			}
+			.content-header {
+				h2 {
+					color: rgba(55, 65, 81, 1);
+					font-weight: 600;
+					font-size: 1.25rem;
+					line-height: 1.75rem;
+				}
+				p {
+					margin-top: 1rem;
+					color: rgba(75, 85, 99, 1);
+					font-size: 0.875rem;
+					line-height: 1.25rem;
+				}
+			}
+			.content-footer {
+				display: flex;
+				align-items: center;
+				.profile-image {
+					border-radius: 999px;
+				}
+				.content-profile {
+					margin-left: 1rem;
+					#author {
+						color: rgba(31, 41, 55, 1);
+						font-size: 0.875rem;
+						line-height: 1.25rem;
+						font-weight: 600;
+						margin: 0;
+					}
+					#date {
+						color: rgba(75, 85, 99, 1);
+						font-size: 0.875rem;
+						line-height: 1.25rem;
+						margin: 0;
+					}
+				}
+			}
+		}
+	}
+`;
 
 export default Cards;

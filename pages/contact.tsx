@@ -4,11 +4,11 @@ import Footer from '../components/Footer';
 
 const Contact = () => {
 	return (
-		<div className="flex flex-col h-screen text-center">
+		<>
 			<Navbar />
 			<ContactContent />
 			<Footer />
-		</div>
+		</>
 	);
 };
 

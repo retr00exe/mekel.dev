@@ -13,34 +13,43 @@ class AboutContent extends Component {
 	render() {
 		return (
 			<AboutWrapper>
-				<Terminal
-					color="white"
-					backgroundColor="#172A45"
-					barColor="black"
-					style={{ width: '800px', fontSize: '1em' }}
-					commands={{
-						about: this.about,
-						education: this.education,
-						skills: this.skills,
-						contact: this.contact,
-					}}
-					description={{
-						about: 'about Me',
-						education: 'my Education',
-						skills: 'my Skills',
-						contact: 'get in touch with me ;)',
-					}}
-					msg="Welcome to about page - Type 'help' for a list of supported commands :)"
-				/>
+				<div class="container">
+					<Terminal
+						color="white"
+						backgroundColor="#172A45"
+						barColor="black"
+						style={{ maxWidth: '800px', fontSize: '1em' }}
+						commands={{
+							about: this.about,
+							education: this.education,
+							skills: this.skills,
+							contact: this.contact,
+						}}
+						descriptions={{
+							about: 'about Me',
+							education: 'my Education',
+							skills: 'my Skills',
+							contact: 'get in touch with me ;)',
+						}}
+						msg="Welcome to about page - Type 'help' for a list of supported commands :)"
+					/>
+				</div>
 			</AboutWrapper>
 		);
 	}
 }
 
-const AboutWrapper = styled.div.attrs({
-	className: 'mx-auto py-20 lg:flex lg:flex-col lg:h-auto',
-})`
-	width: 800px;
+const AboutWrapper = styled.div`
+	background-color: rgba(243, 244, 246, 1);
+	.container {
+		margin: 0 auto;
+		padding: 5rem 0;
+	}
+	@media (min-width: 1024px) {
+		height: auto;
+		display: flex;
+		flex-direction: column;
+	}
 `;
 
 export default AboutContent;

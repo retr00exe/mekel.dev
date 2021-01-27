@@ -4,13 +4,13 @@ import styled from 'styled-components';
 const Navbar = () => {
 	return (
 		<NavbarItems>
-			<div className="flex mx-auto justify-between lg:w-3/5 lg:mx-auto">
+			<div className="nav-container">
 				<div className="nav-logo">
 					<Link href="/">
 						<a>MKL.</a>
 					</Link>
 				</div>
-				<div className="nav-links">
+				<div>
 					<div className="nav-link">
 						<Link href="/">
 							<a>Home</a>
@@ -41,6 +41,16 @@ const NavbarItems = styled.nav`
 	background-color: #fff;
 	display: flex;
 	align-items: center;
+	z-index: 999;
+
+	.nav-container {
+		display: flex;
+		justify-content: space-between;
+		margin: 0 auto;
+		@media (min-width: 1024px) {
+			width: 60%;
+		}
+	}
 
 	.nav-logo {
 		display: flex;
@@ -58,20 +68,17 @@ const NavbarItems = styled.nav`
 		}
 	}
 
-	.nav-links {
-		display: flex;
-		.nav-link {
-			display: inline-block;
-			font-size: 0.9rem;
-			padding: 1rem;
-			font-weight: 400;
-			&:nth-child(1) {
-				color: magenta;
-				font-weight: 600;
-			}
-			&:hover {
-				color: magenta;
-			}
+	.nav-link {
+		display: inline-block;
+		font-size: 0.9rem;
+		padding: 1rem;
+		font-weight: 400;
+		&:nth-child(1) {
+			color: #673ab7;
+			font-weight: 600;
+		}
+		&:hover {
+			color: #673ab7;
 		}
 	}
 `;
