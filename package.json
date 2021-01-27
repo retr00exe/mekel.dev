@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "caniuse-lite": "^1.0.30001180",
     "next": "10.0.4",
     "react": "17.0.1",
     "react-dom": "17.0.1",

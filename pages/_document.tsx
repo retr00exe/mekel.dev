@@ -40,8 +40,6 @@ export default class MyDocument extends Document {
 					<meta charSet="utf-8" />
 					<meta name="description" content="Mekel Ilyasa personal blog" />
 					<meta name="locale" content="id" />
-					<meta name="robots" content="index,follow" />
-					<meta name="googlebot" content="index,follow" />
 				</Head>
 				<body>
 					<Main />

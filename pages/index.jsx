@@ -5,34 +5,24 @@ import Navbar from '../components/Navbar';
 import Cards from '../components/Cards';
 import Footer from '../components/Footer';
 
-export default class Home extends Component {
-	static async getInitialProps() {
-		const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/posts`);
-		const data = await res.json();
-		return {
-			posts: data,
-		};
-	}
-
-	render() {
-		return (
-			<>
-				<Head>
-					<title>Home</title>
-					<link rel="icon" href="/favicon.ico" />
-					<meta name="viewport" content="width=device-width, initial-scale=1" />
-				</Head>
-				<Navbar />
-				<ContentWrapper>
-					<h1>My Posts</h1>
-					{this.props.posts.map((post) => (
-						<Cards post={post} key={post._id} />
-					))}
-				</ContentWrapper>
-				<Footer />
-			</>
-		);
-	}
+export default function Home({ posts }) {
+	return (
+		<>
+			<Head>
+				<title>Home</title>
+				<link rel="icon" href="/favicon.ico" />
+				<meta name="viewport" content="width=device-width, initial-scale=1" />
+			</Head>
+			<Navbar />
+			<ContentWrapper>
+				<h1>My Posts</h1>
+				{posts.map((post) => (
+					<Cards post={post} key={post._id} />
+				))}
+			</ContentWrapper>
+			<Footer />
+		</>
+	);
 }
 
 const ContentWrapper = styled.div`
@@ -47,3 +37,13 @@ const ContentWrapper = styled.div`
 		color: rgba(31, 41, 55, 1);
 	}
 `;
+
+export async function getStaticProps() {
+	const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/posts`);
+	const data = await res.json();
+	return {
+		props: {
+			posts: data,
+		},
+	};
+}
