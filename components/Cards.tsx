@@ -1,6 +1,8 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import styled from 'styled-components';
 import { sliceText } from '../utils/card';
+import { formatDate } from '../utils/date';
 
 const Cards = ({ post }) => {
 	return (
@@ -15,7 +17,9 @@ const Cards = ({ post }) => {
 				/>
 				<div className="card-content">
 					<div className="content-header">
-						<h2>{post.title}</h2>
+						<Link href={`/post/${encodeURIComponent(post.id)}`}>
+							<h2>{post.title}</h2>
+						</Link>
 						<p>{sliceText(post.content, 120)}</p>
 					</div>
 					<div className="content-footer">
@@ -28,7 +32,7 @@ const Cards = ({ post }) => {
 						/>
 						<div className="content-profile">
 							<p id="author">Mekel Ilyasa</p>
-							<p id="date">28 Jun 2020</p>
+							<p id="date">{formatDate(post.date)}</p>
 						</div>
 					</div>
 				</div>
@@ -44,32 +48,30 @@ const CardWrapper = styled.div`
 		box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
 			0 2px 4px -1px rgba(0, 0, 0, 0.06);
 		border-radius: 0.75rem;
+		overflow: hidden;
 		@media (min-width: 1024px) {
 			width: 60%;
 			height: auto;
 			display: flex;
 			flex-direction: row;
 		}
-		.cover-image {
-			object-fit: cover;
-			border-radius: 0.75rem 0 0 0.75rem;
-		}
 		.card-content {
 			background: #fff;
+			margin-top: -1rem;
 			padding: 1.5rem;
 			display: flex;
 			flex-direction: column;
 			justify-content: space-between;
-			border-radius: 0 0.75rem 0.75rem 0;
-			@media (min-width: 1024px) {
-				border-radius: 0 0.75rem 0.75rem 0;
-			}
 			.content-header {
 				h2 {
 					color: rgba(55, 65, 81, 1);
 					font-weight: 600;
 					font-size: 1.25rem;
 					line-height: 1.75rem;
+					&:hover {
+						color: #e200e2;
+						cursor: pointer;
+					}
 				}
 				p {
 					margin-top: 1rem;
@@ -81,9 +83,6 @@ const CardWrapper = styled.div`
 			.content-footer {
 				display: flex;
 				align-items: center;
-				.profile-image {
-					border-radius: 999px;
-				}
 				.content-profile {
 					margin-left: 1rem;
 					#author {

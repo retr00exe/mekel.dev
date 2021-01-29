@@ -1,4 +1,3 @@
-import React, { Component } from 'react';
 import Head from 'next/head';
 import styled from 'styled-components';
 import Navbar from '../components/Navbar';
@@ -27,9 +26,8 @@ export default function Home({ posts }) {
 
 const ContentWrapper = styled.div`
 	background-color: rgba(243, 244, 246, 1);
-	padding-bottom: 4rem;
+	padding: 4rem 0;
 	h1 {
-		padding-top: 5rem;
 		text-align: center;
 		font-size: 1.5rem;
 		line-height: 2rem;

@@ -16,6 +16,19 @@ const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
   }
+
+  .active {
+			color: #673ab7;
+			font-weight: 600;
+		}
+
+  .cover-image {
+    object-fit: cover;
+  }
+  
+  .profile-image {
+    border-radius: 999px;
+  }
 `;
 
 export default function App({ Component, pageProps }) {
