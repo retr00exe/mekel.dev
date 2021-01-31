@@ -40,6 +40,7 @@ const Navbar = () => {
 
 const NavbarItems = styled.nav`
 	width: 100%;
+	height: 4rem;
 	position: fixed;
 	top: 0;
 	background-color: #fff;
@@ -47,14 +48,12 @@ const NavbarItems = styled.nav`
 	align-items: center;
 	justify-content: center;
 	z-index: 999;
-
 	.container {
 		padding: 0 40px;
 		display: flex;
 		width: 100%;
 		max-width: 800px;
 		margin: 0 auto;
-
 		.nav-logo {
 			display: flex;
 			align-items: center;
@@ -71,12 +70,10 @@ const NavbarItems = styled.nav`
 				cursor: pointer;
 			}
 		}
-
 		.link-container {
 			display: flex;
 			margin-left: auto;
 			align-items: center;
-
 			.nav-link {
 				display: inline-block;
 				padding: 0 1rem;

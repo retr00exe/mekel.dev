@@ -5,12 +5,26 @@ import styled from 'styled-components';
 import ReactMarkdown from 'react-markdown';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
+import CodeBlock from '../../components/CodeBlock';
 import { formatDate } from '../../utils/date';
 
 export default function Post({ post }) {
 	const router = useRouter();
 	if (router.isFallback) {
 		return <div>Loading...</div>;
+	}
+
+	function LinkRenderer(props) {
+		return (
+			<a
+				style={{ color: 'blue' }}
+				href={props.href}
+				target="_blank"
+				rel="noopener"
+			>
+				{props.children}
+			</a>
+		);
 	}
 
 	return (
@@ -35,7 +49,12 @@ export default function Post({ post }) {
 						layout="responsive"
 						className="cover-image"
 					/>
-					<ReactMarkdown className="content">{post.content}</ReactMarkdown>
+					<ReactMarkdown
+						className="content"
+						renderers={{ link: LinkRenderer, code: CodeBlock }}
+					>
+						{post.content}
+					</ReactMarkdown>
 				</div>
 			</PostWrapper>
 			<Footer />
@@ -52,31 +71,17 @@ const PostWrapper = styled.div`
 		width: 100%;
 		max-width: 800px;
 		padding: 4rem 2rem 2rem 2rem;
-	}
-	p {
-		color: rgba(31, 41, 55, 1);
-	}
-	@media (max-width: 1024px) {
+		font-size: 1.15rem;
+		p {
+			color: rgba(31, 41, 55, 1);
+		}
 		.content {
-			font-size: 1rem;
+			text-align: justify;
 		}
 	}
 `;
 
-export async function getStaticPaths() {
-	const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/posts`);
-	const posts = await res.json();
-	return {
-		fallback: true,
-		paths: posts.map((post) => ({
-			params: {
-				id: post._id,
-			},
-		})),
-	};
-}
-
-export async function getStaticProps(ctx) {
+export async function getServerSideProps(ctx) {
 	const res = await fetch(
 		`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/posts/${ctx.params.id}`
 	);

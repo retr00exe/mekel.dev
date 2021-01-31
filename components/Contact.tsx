@@ -30,22 +30,6 @@ const Contact = () => {
 					<FaGithub className="icon github" />
 				</a>
 				<a
-					href="https://stackoverflow.com/users/11771377/mekel-ilyasa"
-					aria-label="Stackoverflow"
-					target="_blank"
-					rel="noopener"
-				>
-					<FaStackOverflow className="icon stackoverflow" />
-				</a>
-				<a
-					href="https://www.hackerrank.com/mekelilyasa3"
-					aria-label="Hackerrank"
-					target="_blank"
-					rel="noopener"
-				>
-					<FaHackerrank className="icon hackerrank" />
-				</a>
-				<a
 					href="https://www.linkedin.com/in/mekelilyasa/"
 					aria-label="Linkedin"
 					target="_blank"
@@ -86,6 +70,7 @@ const ContactWrapper = styled.div`
 		margin: 4rem 0;
 		p {
 			font-size: 1.25rem;
+			text-align: justify;
 		}
 		@media (max-width: 1024px) {
 			p {
@@ -99,22 +84,6 @@ const ContactWrapper = styled.div`
 		&:hover {
 			cursor: pointer;
 			color: #14191e;
-		}
-	}
-	.stackoverflow {
-		font-size: 2rem;
-		margin: 0 0.5rem;
-		&:hover {
-			cursor: pointer;
-			color: #f48024;
-		}
-	}
-	.hackerrank {
-		font-size: 2rem;
-		margin: 0 0.5rem;
-		&:hover {
-			cursor: pointer;
-			color: #29b85d;
 		}
 	}
 	.linkedin {

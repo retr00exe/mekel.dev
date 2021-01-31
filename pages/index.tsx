@@ -37,7 +37,9 @@ const ContentWrapper = styled.div`
 `;
 
 export async function getStaticProps() {
-	const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/posts`);
+	const res = await fetch(
+		`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/posts?_sort=date:DESC`
+	);
 	const data = await res.json();
 	return {
 		props: {
