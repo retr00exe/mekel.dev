@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 import {
 	FaGithub,
-	FaStackOverflow,
-	FaHackerrank,
 	FaLinkedin,
 	FaInstagram,
 	FaFacebookSquare,

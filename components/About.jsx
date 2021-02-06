@@ -4,11 +4,11 @@ import Terminal from 'terminal-in-react';
 
 class AboutContent extends Component {
 	about = () =>
-		"Hi there! I'm Mekel Ilyasa. A computer nerd who love to learn all things from frontend into backend & security xD. There's no fancy animation or design in this blog, I make this blog simple and lightweight as possible to boost the performance :)";
+		"Hi there! I'm Mekel Ilyasa. A computer nerd who love to learn all things from frontend into backend & security xD. I have no life, I spend almost all my entire time in front of my laptop LMAO. I do programming not because want expect to get paid or get adulation by the public, but because it is fun to program. There's no fancy animation or design in this blog, I make this blog simple and lightweight as possible to boost the performance :) ";
 	education = () =>
 		"I'm currently pursuing my bachelor degree at Computer Engineering Departement, Diponegoro University. I know, majoring 'IT' at college sucks af but I try my best to survive with old school tech stack at college LOL. I code using PHP too at college even I hate it.";
 	skills = () =>
-		"My main skills are Python & Javascript, but sometimes I also code using low level language like C, C++ & assembly too. You can visit my github to see all my works and my favorite tech stack. I don' code using PHP btw.";
+		'My main skills are Python & Javascript, but sometimes I also code using low level language like C, C++ & assembly too. You can visit my github to see all my works and my favorite tech stack. My fav tech stack are MERN (MongoDB, Express, React, Node.js) stack. Right now I still exploring an adventure to learn Go programming language to build robust backend services and learn SSR and SSG using Next.js.';
 
 	render() {
 		return (

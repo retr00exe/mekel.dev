@@ -1,10 +1,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import styled from 'styled-components';
+import readingTime from 'reading-time';
 import { sliceText } from '../utils/card';
 import { formatDate } from '../utils/date';
 
 const Cards = ({ post }) => {
+	const stats = readingTime(post.content);
 	return (
 		<CardWrapper>
 			<div className="card-container">
@@ -22,17 +24,22 @@ const Cards = ({ post }) => {
 						</Link>
 						<p>{sliceText(post.content, 120)}</p>
 					</div>
-					<div className="content-footer">
-						<Image
-							src="https://avatars.githubusercontent.com/u/55347344?s=460&u=f5b39bf3ba4461a448a4ea15d6bd28fc6b7b4337&v=4"
-							alt=""
-							width={50}
-							height={50}
-							className="profile-image"
-						/>
-						<div className="content-profile">
-							<p id="author">Mekel Ilyasa</p>
-							<p id="date">{formatDate(post.date)}</p>
+					<div className="footer">
+						<div className="content-footer">
+							<Image
+								src="https://avatars.githubusercontent.com/u/55347344?s=460&u=f5b39bf3ba4461a448a4ea15d6bd28fc6b7b4337&v=4"
+								alt=""
+								width={50}
+								height={50}
+								className="profile-image"
+							/>
+							<div className="content-profile">
+								<p id="author">Mekel Ilyasa</p>
+								<p id="date">{formatDate(post.date)}</p>
+							</div>
+						</div>
+						<div className="readtime">
+							<p>{stats.text}</p>
 						</div>
 					</div>
 				</div>
@@ -49,6 +56,17 @@ const CardWrapper = styled.div`
 			0 2px 4px -1px rgba(0, 0, 0, 0.06);
 		border-radius: 0.75rem;
 		overflow: hidden;
+		@media (min-width: 590px) {
+			height: auto;
+			display: flex;
+			flex-direction: row;
+		}
+		@media (min-width: 768px) {
+			width: 80%;
+			height: auto;
+			display: flex;
+			flex-direction: row;
+		}
 		@media (min-width: 1024px) {
 			width: 60%;
 			height: auto;
@@ -80,24 +98,33 @@ const CardWrapper = styled.div`
 					line-height: 1.25rem;
 				}
 			}
-			.content-footer {
+			.footer {
 				display: flex;
-				align-items: center;
-				.content-profile {
-					margin-left: 1rem;
-					#author {
-						color: rgba(31, 41, 55, 1);
-						font-size: 0.875rem;
-						line-height: 1.25rem;
-						font-weight: 600;
-						margin: 0;
+				flex-direction: row;
+				justify-content: space-between;
+				.content-footer {
+					display: flex;
+					align-items: center;
+					.content-profile {
+						margin-left: 1rem;
+						#author {
+							color: rgba(31, 41, 55, 1);
+							font-size: 0.875rem;
+							line-height: 1.25rem;
+							font-weight: 600;
+							margin: 0;
+						}
+						#date {
+							color: rgba(75, 85, 99, 1);
+							font-size: 0.875rem;
+							line-height: 1.25rem;
+							margin: 0;
+						}
 					}
-					#date {
-						color: rgba(75, 85, 99, 1);
-						font-size: 0.875rem;
-						line-height: 1.25rem;
-						margin: 0;
-					}
+				}
+				.readtime {
+					color: rgba(156, 163, 175, 1);
+					text-transform: capitalize;
 				}
 			}
 		}

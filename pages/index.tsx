@@ -14,7 +14,6 @@ export default function Home({ posts }) {
 			</Head>
 			<Navbar />
 			<ContentWrapper>
-				<h1>My Posts</h1>
 				{posts.map((post) => (
 					<Cards post={post} key={post._id} />
 				))}
@@ -26,14 +25,7 @@ export default function Home({ posts }) {
 
 const ContentWrapper = styled.div`
 	background-color: rgba(243, 244, 246, 1);
-	padding: 4rem 0;
-	h1 {
-		text-align: center;
-		font-size: 1.5rem;
-		line-height: 2rem;
-		font-weight: 700;
-		color: rgba(31, 41, 55, 1);
-	}
+	padding: 6rem 0 4rem 0;
 `;
 
 export async function getStaticProps() {
