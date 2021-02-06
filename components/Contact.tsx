@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 import {
 	FaGithub,
 	FaLinkedin,
@@ -7,52 +8,80 @@ import {
 } from 'react-icons/fa';
 
 const Contact = () => {
+	const fadeInUp = {
+		initial: {
+			y: 60,
+			opacity: 0,
+		},
+		animate: {
+			y: 0,
+			opacity: 1,
+			transition: {
+				duration: 0.6,
+				ease: [0.6, -0.05, 0.01, 0.99],
+			},
+		},
+	};
+	const stagger = {
+		animate: {
+			transition: {
+				staggerChildren: 0.15,
+			},
+		},
+	};
 	return (
-		<ContactWrapper>
-			<div className="header">
-				<h1>Contact Me</h1>
-				<p>
-					Hi there, you can reach me by follow my social media account or email
-					me at mekelilyasa@live.com. I am quite active at Facebook and
-					Instagram, feel free to leave me a message or ask me some question
-					about science or tech :)
-				</p>
-			</div>
-			<div className="icons">
-				<a
-					href="https://github.com/retr00exe"
-					aria-label="Github"
-					target="_blank"
-					rel="noopener"
-				>
-					<FaGithub className="icon github" />
-				</a>
-				<a
-					href="https://www.linkedin.com/in/mekelilyasa/"
-					aria-label="Linkedin"
-					target="_blank"
-					rel="noopener"
-				>
-					<FaLinkedin className="icon linkedin" />
-				</a>
-				<a
-					href="https://www.instagram.com/mekelilyasa/"
-					aria-label="Instagram"
-					target="_blank"
-					rel="noopener"
-				>
-					<FaInstagram className="icon instagram" />
-				</a>
-				<a
-					href="https://www.facebook.com/mekel.ilyasa/"
-					aria-label="Facebook"
-					target="_blank"
-					rel="noopener"
-				>
-					<FaFacebookSquare className="icon facebook" />
-				</a>
-			</div>
-		</ContactWrapper>
+		<motion.div
+			exit={{ opacity: 0 }}
+			variants={stagger}
+			initial="initial"
+			animate="animate"
+		>
+			<ContactWrapper>
+				<div className="header">
+					<motion.h1 variants={fadeInUp}>Contact Me</motion.h1>
+					<motion.p variants={fadeInUp}>
+						Hi there, you can reach me by follow my social media or email me at
+						mekelilyasa@live.com. I am quite active at Facebook and Instagram,
+						feel free to leave me a message or ask me some question about
+						science or tech :)
+					</motion.p>
+				</div>
+				<motion.div variants={fadeInUp} className="icons">
+					<a
+						href="https://github.com/retr00exe"
+						aria-label="Github"
+						target="_blank"
+						rel="noopener"
+					>
+						<FaGithub className="icon github" />
+					</a>
+					<a
+						href="https://www.linkedin.com/in/mekelilyasa/"
+						aria-label="Linkedin"
+						target="_blank"
+						rel="noopener"
+					>
+						<FaLinkedin className="icon linkedin" />
+					</a>
+					<a
+						href="https://www.instagram.com/mekelilyasa/"
+						aria-label="Instagram"
+						target="_blank"
+						rel="noopener"
+					>
+						<FaInstagram className="icon instagram" />
+					</a>
+					<a
+						href="https://www.facebook.com/mekel.ilyasa/"
+						aria-label="Facebook"
+						target="_blank"
+						rel="noopener"
+					>
+						<FaFacebookSquare className="icon facebook" />
+					</a>
+				</motion.div>
+			</ContactWrapper>
+		</motion.div>
 	);
 };
 

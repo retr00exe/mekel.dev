@@ -53,6 +53,7 @@ const NavbarItems = styled.nav`
 	.container {
 		padding: 0 40px;
 		display: flex;
+		justify-content: space-between;
 		width: 100%;
 		max-width: 800px;
 		margin: 0 auto;
