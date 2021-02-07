@@ -1,9 +1,16 @@
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
+import { fadeInUp } from '../utils/animate';
 
 const Footer = () => {
 	return (
 		<FooterWrapper>
-			<p>
+			<motion.p
+				exit={{ opacity: 0 }}
+				initial="initial"
+				animate="animate"
+				variants={fadeInUp}
+			>
 				Made with ❤️ using{' '}
 				<a href="https://nextjs.org/" target="_blank" rel="noopener">
 					Next.js
@@ -12,7 +19,7 @@ const Footer = () => {
 				<a href="https://strapi.io/" target="_blank" rel="noopener">
 					Strapi
 				</a>
-			</p>
+			</motion.p>
 		</FooterWrapper>
 	);
 };

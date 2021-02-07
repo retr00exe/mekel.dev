@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { useTheme } from 'next-themes';
 import { motion } from 'framer-motion';
 import { FiSun, FiMoon } from 'react-icons/fi';
+import { fadeInDown } from '../utils/animate';
 
 interface Navbar {
 	active?: boolean;
@@ -13,20 +14,6 @@ interface Navbar {
 const Navbar = (props: Navbar) => {
 	const router = useRouter();
 	const { theme, setTheme } = useTheme();
-	const fadeInUp = {
-		initial: {
-			y: -60,
-			opacity: 0,
-		},
-		animate: {
-			y: 0,
-			opacity: 1,
-			transition: {
-				duration: 0.6,
-				ease: [0.6, -0.05, 0.01, 0.99],
-			},
-		},
-	};
 	return (
 		<NavbarItems>
 			<motion.div
@@ -36,7 +23,7 @@ const Navbar = (props: Navbar) => {
 				className="container"
 			>
 				{props.active ? (
-					<motion.div variants={fadeInUp}>
+					<motion.div variants={fadeInDown}>
 						<p
 							onClick={() =>
 								window.scroll({ top: 0, left: 0, behavior: 'smooth' })
@@ -47,12 +34,12 @@ const Navbar = (props: Navbar) => {
 					</motion.div>
 				) : (
 					<>
-						<motion.span variants={fadeInUp} className="nav-logo">
+						<motion.span variants={fadeInDown} className="nav-logo">
 							<Link href="/">
 								<a>MKL.</a>
 							</Link>
 						</motion.span>
-						<motion.ul variants={fadeInUp} className="link-container">
+						<motion.ul variants={fadeInDown} className="link-container">
 							<li className="nav-link">
 								<Link href="/">
 									<a className={router.pathname === '/' ? 'active' : ''}>
@@ -78,7 +65,7 @@ const Navbar = (props: Navbar) => {
 					</>
 				)}
 				<motion.span
-					variants={fadeInUp}
+					variants={fadeInDown}
 					className="theme-toogle"
 					onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
 				>
@@ -123,6 +110,7 @@ const NavbarItems = styled.nav`
 			border-radius: 4px;
 			padding: 0 8px;
 			margin: 10px 0;
+			margin-left: 20px;
 			cursor: pointer;
 		}
 		.nav-logo {
@@ -145,6 +133,10 @@ const NavbarItems = styled.nav`
 			display: flex;
 			margin-left: auto;
 			align-items: center;
+			padding-inline-start: 0 !important;
+			@media (max-width: 768px) {
+				margin-left: 0;
+			}
 			.nav-link {
 				display: inline-block;
 				padding: 0 1rem;
