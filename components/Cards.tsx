@@ -74,15 +74,17 @@ const CardWrapper = styled.div`
 			flex-direction: row;
 		}
 		.card-content {
-			background: #fff;
+			background-color: var(--navColor);
 			margin-top: -1rem;
 			padding: 1.5rem;
 			display: flex;
 			flex-direction: column;
 			justify-content: space-between;
+			transition-duration: 0.6s;
+			transition-timing-function: ease;
 			.content-header {
 				h2 {
-					color: rgba(55, 65, 81, 1);
+					color: var(--colorSecondary);
 					font-weight: 600;
 					font-size: 1.25rem;
 					line-height: 1.75rem;
@@ -93,7 +95,7 @@ const CardWrapper = styled.div`
 				}
 				p {
 					margin-top: 1rem;
-					color: rgba(75, 85, 99, 1);
+					color: var(--colorTertiary);
 					font-size: 0.875rem;
 					line-height: 1.25rem;
 				}
@@ -108,14 +110,14 @@ const CardWrapper = styled.div`
 					.content-profile {
 						margin-left: 1rem;
 						#author {
-							color: rgba(31, 41, 55, 1);
+							color: var(--colorPrimary);
 							font-size: 0.875rem;
 							line-height: 1.25rem;
 							font-weight: 600;
 							margin: 0;
 						}
 						#date {
-							color: rgba(75, 85, 99, 1);
+							color: var(--colorTertiary);
 							font-size: 0.875rem;
 							line-height: 1.25rem;
 							margin: 0;

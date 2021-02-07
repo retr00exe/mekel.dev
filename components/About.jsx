@@ -42,7 +42,9 @@ class AboutContent extends Component {
 }
 
 const AboutWrapper = styled.div`
-	background-color: rgba(243, 244, 246, 1);
+	background-color: var(--background);
+	transition-duration: 0.6s;
+	transition-timing-function: ease;
 	.container {
 		height: 100vh;
 		padding: 4rem 0 6rem 0;

@@ -1,5 +1,6 @@
 import Router from 'next/router';
 import { createGlobalStyle } from 'styled-components';
+import { ThemeProvider } from 'next-themes';
 import { AnimatePresence } from 'framer-motion';
 import NProgress from 'nprogress';
 import '../public/asset/css/nprogress.min.css';
@@ -34,12 +35,45 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
+  :root {
+    --background: rgba(243, 244, 246, 1);
+    --backgroundPost:rgba(249, 250, 251, 1);
+    --colorPrimary:rgba(31, 41, 55, 1);
+    --colorSecondary: rgba(55, 65, 81, 1);
+    --colorTertiary: rgba(75, 85, 99, 1);
+    --colorQuarternary: rgba(156, 163, 175, 1);
+    --navColor: #fff;
+    --navHoverColor: #673ab7;
+    --linkColor:#0000cc;
+}
+
+  [data-theme='dark'] {
+    --background: #050505;
+    --backgroundPost: #050505;
+    --colorPrimary:rgba(229, 231, 235, 1);
+    --colorSecondary:rgba(229, 231, 235, 1);
+    --colorTertiary: rgba(209, 213, 219, 1);
+    --colorQuarternary: rgba(243, 244, 246, 1);
+    --navColor: #101012;
+    --navHoverColor: #e200e2;
+    --linkColor:#e200e2;
+
+
+
+
+}
+
   .active {
-			color: #673ab7;
+			color: var(--navHoverColor);
 			font-weight: 600;
 		}
 
   .cover-image {
+    object-fit: cover;
+  }
+
+  .article-image {
+		border-radius: 1rem;
     object-fit: cover;
   }
   
@@ -52,9 +86,11 @@ export default function App({ Component, pageProps }) {
 	return (
 		<>
 			<GlobalStyle />
-			<AnimatePresence exitBeforeEnter>
-				<Component {...pageProps} />
-			</AnimatePresence>
+			<ThemeProvider>
+				<AnimatePresence exitBeforeEnter>
+					<Component {...pageProps} />
+				</AnimatePresence>
+			</ThemeProvider>
 		</>
 	);
 }

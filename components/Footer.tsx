@@ -25,11 +25,14 @@ const FooterWrapper = styled.footer`
 	margin: 0 auto;
 	font-size: 0.75rem;
 	text-align: center;
-	background-color: #fff;
+	background-color: var(--navColor);
+	transition-duration: 0.6s;
+	transition-timing-function: ease;
 	p {
+		color: var(--colorPrimary);
 		a {
 			text-decoration: underline;
-			color: #0000cc;
+			color: var(--linkColor);
 		}
 	}
 `;

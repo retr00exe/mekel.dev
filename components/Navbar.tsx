@@ -1,7 +1,9 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
+import { useTheme } from 'next-themes';
 import { motion } from 'framer-motion';
+import { FiSun, FiMoon } from 'react-icons/fi';
 
 interface Navbar {
 	active?: boolean;
@@ -10,6 +12,7 @@ interface Navbar {
 
 const Navbar = (props: Navbar) => {
 	const router = useRouter();
+	const { theme, setTheme } = useTheme();
 	const fadeInUp = {
 		initial: {
 			y: -60,
@@ -32,38 +35,55 @@ const Navbar = (props: Navbar) => {
 				animate="animate"
 				className="container"
 			>
-				<span className="nav-logo">
-					<Link href="/">
-						<a>MKL.</a>
-					</Link>
-				</span>
 				{props.active ? (
 					<motion.div variants={fadeInUp}>
-						<p>{props.title}</p>
+						<p
+							onClick={() =>
+								window.scroll({ top: 0, left: 0, behavior: 'smooth' })
+							}
+						>
+							{props.title}
+						</p>
 					</motion.div>
 				) : (
-					<motion.ul variants={fadeInUp} className="link-container">
-						<li className="nav-link">
+					<>
+						<motion.span variants={fadeInUp} className="nav-logo">
 							<Link href="/">
-								<a className={router.pathname === '/' ? 'active' : ''}>Home</a>
+								<a>MKL.</a>
 							</Link>
-						</li>
-						<li className="nav-link">
-							<Link href="/about">
-								<a className={router.pathname === '/about' ? 'active' : ''}>
-									About
-								</a>
-							</Link>
-						</li>
-						<li className="nav-link">
-							<Link href="/contact">
-								<a className={router.pathname === '/contact' ? 'active' : ''}>
-									Contact
-								</a>
-							</Link>
-						</li>
-					</motion.ul>
+						</motion.span>
+						<motion.ul variants={fadeInUp} className="link-container">
+							<li className="nav-link">
+								<Link href="/">
+									<a className={router.pathname === '/' ? 'active' : ''}>
+										Home
+									</a>
+								</Link>
+							</li>
+							<li className="nav-link">
+								<Link href="/about">
+									<a className={router.pathname === '/about' ? 'active' : ''}>
+										About
+									</a>
+								</Link>
+							</li>
+							<li className="nav-link">
+								<Link href="/contact">
+									<a className={router.pathname === '/contact' ? 'active' : ''}>
+										Contact
+									</a>
+								</Link>
+							</li>
+						</motion.ul>
+					</>
 				)}
+				<motion.span
+					variants={fadeInUp}
+					className="theme-toogle"
+					onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+				>
+					{theme === 'light' ? <FiMoon /> : <FiSun />}
+				</motion.span>
 			</motion.div>
 		</NavbarItems>
 	);
@@ -74,15 +94,19 @@ const NavbarItems = styled.nav`
 	height: 4rem;
 	position: fixed;
 	top: 0;
-	background-color: #fff;
+	background-color: var(--navColor);
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	z-index: 999;
 	box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
 		0 2px 4px -1px rgba(0, 0, 0, 0.06);
+	transition-duration: 0.6s;
+	transition-timing-function: ease;
 	p {
-		font-weight: 700;
+		font-weight: 500;
+		cursor: pointer;
+		color: var(--colorPrimary);
 	}
 	.container {
 		padding: 0 40px;
@@ -91,13 +115,23 @@ const NavbarItems = styled.nav`
 		width: 100%;
 		max-width: 800px;
 		margin: 0 auto;
+		.theme-toogle {
+			display: flex;
+			align-items: center;
+			font-size: 1rem;
+			background-color: rgba(243, 244, 246, 1);
+			border-radius: 4px;
+			padding: 0 8px;
+			margin: 10px 0;
+			cursor: pointer;
+		}
 		.nav-logo {
 			display: flex;
 			align-items: center;
 			font-size: 1rem;
 			text-transform: uppercase;
 			font-weight: 500;
-			background-color: black;
+			background-color: #101012;
 			border-radius: 4px;
 			color: white;
 			padding: 0 8px;
@@ -115,8 +149,9 @@ const NavbarItems = styled.nav`
 				display: inline-block;
 				padding: 0 1rem;
 				font-weight: 400;
+				color: var(--colorPrimary);
 				&:hover {
-					color: #673ab7;
+					color: var(--navHoverColor);
 					cursor: pointer;
 				}
 				@media (max-width: 1024px) {

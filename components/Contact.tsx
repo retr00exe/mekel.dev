@@ -88,13 +88,16 @@ const Contact = () => {
 const ContactWrapper = styled.div`
 	height: 100vh;
 	padding: 4rem 2rem;
-	background-color: rgba(243, 244, 246, 1);
+	background-color: var(--background);
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	transition-duration: 0.6s;
+	transition-timing-function: ease;
 	.header {
 		max-width: 600px;
 		margin: 4rem 0;
+		color: var(--colorPrimary);
 		p {
 			font-size: 1.25rem;
 			text-align: justify;
@@ -108,14 +111,16 @@ const ContactWrapper = styled.div`
 	.github {
 		font-size: 2rem;
 		margin: 0 0.5rem;
+		color: var(--colorPrimary);
 		&:hover {
 			cursor: pointer;
-			color: #14191e;
+			color: var(--colorPrimary);
 		}
 	}
 	.linkedin {
 		font-size: 2rem;
 		margin: 0 0.5rem;
+		color: var(--colorPrimary);
 		&:hover {
 			cursor: pointer;
 			color: #0077b7;
@@ -124,6 +129,7 @@ const ContactWrapper = styled.div`
 	.instagram {
 		font-size: 2rem;
 		margin: 0 0.5rem;
+		color: var(--colorPrimary);
 		&:hover {
 			cursor: pointer;
 			color: #c21a73;
@@ -132,6 +138,7 @@ const ContactWrapper = styled.div`
 	.facebook {
 		font-size: 2rem;
 		margin: 0 0.5rem;
+		color: var(--colorPrimary);
 		&:hover {
 			cursor: pointer;
 			color: #465993;

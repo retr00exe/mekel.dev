@@ -55,8 +55,10 @@ export default function Home({ posts }) {
 }
 
 const ContentWrapper = styled.div`
-	background-color: rgba(243, 244, 246, 1);
+	background-color: var(--background);
 	padding: 6rem 0 4rem 0;
+	transition-duration: 0.6s;
+	transition-timing-function: ease;
 `;
 
 export async function getStaticProps() {

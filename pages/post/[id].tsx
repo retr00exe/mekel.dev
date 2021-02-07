@@ -98,7 +98,7 @@ export default function Post({ post }) {
 								width={500}
 								height={300}
 								layout="responsive"
-								className="cover-image"
+								className="article-image"
 							/>
 						</motion.div>
 						<motion.div variants={fadeInUp}>
@@ -118,11 +118,13 @@ export default function Post({ post }) {
 }
 
 const PostWrapper = styled.div`
-	background-color: rgba(249, 250, 251, 1);
+	background-color: var(--backgroundPost);
 	padding-bottom: 2rem;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	transition-duration: 0.6s;
+	transition-timing-function: ease;
 	.container {
 		width: 100%;
 		max-width: 800px;
@@ -130,6 +132,9 @@ const PostWrapper = styled.div`
 		font-size: 1.15rem;
 		.header-container {
 			padding-bottom: 2rem;
+			h1 {
+				color: var(--colorPrimary);
+			}
 			.header {
 				display: flex;
 				flex-direction: row;
@@ -140,14 +145,14 @@ const PostWrapper = styled.div`
 					.content-profile {
 						margin-left: 1rem;
 						#author {
-							color: rgba(31, 41, 55, 1);
+							color: var(--colorPrimary);
 							font-size: 0.875rem;
 							line-height: 1.25rem;
 							font-weight: 600;
 							margin: 0;
 						}
 						#date {
-							color: rgba(75, 85, 99, 1);
+							color: var(--colorTertiary);
 							font-size: 0.875rem;
 							line-height: 1.25rem;
 							margin: 0;
@@ -161,6 +166,7 @@ const PostWrapper = styled.div`
 			}
 		}
 		.content {
+			color: var(--colorPrimary);
 			text-align: justify;
 			line-height: 1.6;
 		}
