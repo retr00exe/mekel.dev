@@ -6,12 +6,12 @@ import { motion } from 'framer-motion';
 import { FiSun, FiMoon } from 'react-icons/fi';
 import { fadeInDown } from '../utils/animate';
 
-interface Navbar {
+interface Props {
 	active?: boolean;
 	title?: string;
 }
 
-const Navbar = (props: Navbar) => {
+const Navbar: React.FC<Props> = (props) => {
 	const router = useRouter();
 	const { theme, setTheme } = useTheme();
 	return (
@@ -119,7 +119,7 @@ const NavbarItems = styled.nav`
 			font-size: 1rem;
 			text-transform: uppercase;
 			font-weight: 500;
-			background-color: #101012;
+			background-color: #202020;
 			border-radius: 4px;
 			color: white;
 			padding: 0 8px;

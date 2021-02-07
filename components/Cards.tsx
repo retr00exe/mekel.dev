@@ -5,7 +5,19 @@ import readingTime from 'reading-time';
 import { sliceText } from '../utils/card';
 import { formatDate } from '../utils/date';
 
-const Cards = ({ post }) => {
+interface Props {
+	post: {
+		content: string;
+		cover: {
+			url: string;
+		};
+		id: string;
+		title: string;
+		date?: Date;
+	};
+}
+
+const Cards: React.FC<Props> = ({ post }) => {
 	const stats = readingTime(post.content);
 	return (
 		<CardWrapper>

@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar';
 import ContactContent from '../components/Contact';
 import Footer from '../components/Footer';
 
-const Contact = () => {
+const Contact: React.FC = () => {
 	return (
 		<>
 			<Head>

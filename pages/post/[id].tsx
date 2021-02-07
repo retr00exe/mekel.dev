@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
-import { useRouter } from 'next/router';
+import { NextRouter, useRouter } from 'next/router';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
@@ -10,44 +10,34 @@ import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import CodeBlock from '../../components/CodeBlock';
 import { formatDate } from '../../utils/date';
+import { fadeInUp, stagger } from '../../utils/animate';
 
-export default function Post({ post }) {
-	const router = useRouter();
+interface Post {
+	post: {
+		title: string;
+		content: string;
+		cover: {
+			name?: string;
+			url: string;
+			ext?: string;
+		};
+		date: Date;
+		createdAt?: Date;
+		updatedAt?: Date;
+	};
+}
+
+export default function Post({ post }: Post): JSX.Element {
+	const router: NextRouter = useRouter();
 	if (router.isFallback) {
 		return <div>Loading...</div>;
 	}
-	const [navbar, setNavbar] = useState(true);
+	const [navbar, setNavbar] = useState<boolean>(true);
 	const stats = readingTime(post.content);
-	const fadeInUp = {
-		initial: {
-			y: 60,
-			opacity: 0,
-		},
-		animate: {
-			y: 0,
-			opacity: 1,
-			transition: {
-				duration: 0.6,
-				ease: [0.6, -0.05, 0.01, 0.99],
-			},
-		},
-	};
-	const stagger = {
-		animate: {
-			transition: {
-				staggerChildren: 0.15,
-			},
-		},
-	};
-	const LinkRenderer = (props) => {
+	const LinkRenderer = ({ href, children }) => {
 		return (
-			<a
-				style={{ color: 'blue' }}
-				href={props.href}
-				target="_blank"
-				rel="noopener"
-			>
-				{props.children}
+			<a style={{ color: 'blue' }} href={href} target="_blank" rel="noopener">
+				{children}
 			</a>
 		);
 	};

@@ -8,7 +8,7 @@ import {
 } from 'react-icons/fa';
 import { fadeInUp, stagger } from '../utils/animate';
 
-const Contact = () => {
+const Contact: React.FC = () => {
 	return (
 		<motion.div
 			exit={{ opacity: 0 }}
@@ -22,8 +22,7 @@ const Contact = () => {
 					<motion.p variants={fadeInUp}>
 						Hi there, you can reach me by follow my social media or email me at
 						mekelilyasa@live.com. I am quite active at Facebook and Instagram,
-						feel free to leave me a message or ask me some question about
-						science or tech :)
+						feel free to leave me a message :)
 					</motion.p>
 				</div>
 				<motion.div variants={fadeInUp} className="icons">

@@ -48,13 +48,13 @@ const GlobalStyle = createGlobalStyle`
 }
 
   [data-theme='dark'] {
-    --background: #050505;
-    --backgroundPost: #050505;
+    --background: #181818;
+    --backgroundPost: #181818;
     --colorPrimary:rgba(229, 231, 235, 1);
     --colorSecondary:rgba(229, 231, 235, 1);
     --colorTertiary: rgba(209, 213, 219, 1);
     --colorQuarternary: rgba(243, 244, 246, 1);
-    --navColor: #101012;
+    --navColor: #202020;
     --navHoverColor: #e200e2;
     --linkColor:#e200e2;
 

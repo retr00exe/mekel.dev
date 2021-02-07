@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { fadeInUp } from '../utils/animate';
 
-const Footer = () => {
+const Footer: React.FC = () => {
 	return (
 		<FooterWrapper>
 			<motion.p
