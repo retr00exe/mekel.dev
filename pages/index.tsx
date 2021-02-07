@@ -43,7 +43,7 @@ export default function Home({ posts }) {
 			>
 				<ContentWrapper>
 					{posts.map((post) => (
-						<motion.div variants={fadeInUp}>
+						<motion.div key={post._id} variants={fadeInUp}>
 							<Cards post={post} key={post._id} />
 						</motion.div>
 					))}

@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
@@ -15,6 +16,7 @@ export default function Post({ post }) {
 	if (router.isFallback) {
 		return <div>Loading...</div>;
 	}
+	const [navbar, setNavbar] = useState(true);
 	const stats = readingTime(post.content);
 	const fadeInUp = {
 		initial: {
@@ -37,7 +39,7 @@ export default function Post({ post }) {
 			},
 		},
 	};
-	function LinkRenderer(props) {
+	const LinkRenderer = (props) => {
 		return (
 			<a
 				style={{ color: 'blue' }}
@@ -48,7 +50,14 @@ export default function Post({ post }) {
 				{props.children}
 			</a>
 		);
-	}
+	};
+	const changeNavbar = () => {
+		window.scrollY >= 200 ? setNavbar(false) : setNavbar(true);
+	};
+	useEffect(() => {
+		window.addEventListener('scroll', changeNavbar);
+		return () => window.removeEventListener('scroll', changeNavbar);
+	});
 
 	return (
 		<>
@@ -57,7 +66,7 @@ export default function Post({ post }) {
 				<link rel="icon" href="/favicon.ico" />
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 			</Head>
-			<Navbar />
+			{navbar ? <Navbar /> : <Navbar active title={post.title} />}
 			<motion.div exit={{ opacity: 0 }} initial="initial" animate="animate">
 				<PostWrapper>
 					<motion.div variants={stagger} className="container">
