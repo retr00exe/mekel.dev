@@ -9,8 +9,9 @@ import readingTime from 'reading-time';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import CodeBlock from '../../components/CodeBlock';
-import { formatDate } from '../../utils/date';
+import { getPostById, getAllPosts } from '../../lib/graphql/queries';
 import { fadeInUp, stagger } from '../../utils/animate';
+import { formatDate } from '../../utils/date';
 
 interface Post {
 	post: {
@@ -164,23 +165,19 @@ const PostWrapper = styled.div`
 `;
 
 export async function getStaticPaths() {
-	const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/posts`);
-	const posts = await res.json();
+	const { posts } = await getAllPosts();
 	return {
 		fallback: true,
 		paths: posts.map((post) => ({
 			params: {
-				id: post._id,
+				slug: post.id,
 			},
 		})),
 	};
 }
 
 export async function getStaticProps(ctx) {
-	const res = await fetch(
-		`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/posts/${ctx.params.id}`
-	);
-	const post = await res.json();
+	const { post } = await getPostById(ctx.params.slug);
 	return {
 		props: {
 			post,

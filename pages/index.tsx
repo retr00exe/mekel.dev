@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import Navbar from '../components/Navbar';
 import Cards from '../components/Cards';
 import Footer from '../components/Footer';
+import { getAllPosts } from '../lib/graphql/queries';
 import { fadeInUp, stagger } from '../utils/animate';
 
 export default function Home({ posts }) {
@@ -23,8 +24,8 @@ export default function Home({ posts }) {
 			>
 				<ContentWrapper>
 					{posts.map((post) => (
-						<motion.div key={post._id} variants={fadeInUp}>
-							<Cards post={post} key={post._id} />
+						<motion.div key={post.id} variants={fadeInUp}>
+							<Cards post={post} key={post.id} />
 						</motion.div>
 					))}
 				</ContentWrapper>
@@ -42,13 +43,10 @@ const ContentWrapper = styled.div`
 `;
 
 export async function getStaticProps() {
-	const res = await fetch(
-		`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/posts?_sort=date:DESC`
-	);
-	const data = await res.json();
+	const { posts } = await getAllPosts();
 	return {
 		props: {
-			posts: data,
+			posts,
 		},
 	};
 }
