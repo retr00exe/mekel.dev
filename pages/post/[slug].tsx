@@ -20,7 +20,6 @@ interface Post {
 		cover: {
 			name?: string;
 			url: string;
-			ext?: string;
 		};
 		date: Date;
 		createdAt?: Date;
@@ -33,8 +32,10 @@ export default function Post({ post }: Post): JSX.Element {
 	if (router.isFallback) {
 		return <div>Loading...</div>;
 	}
+
 	const [navbar, setNavbar] = useState<boolean>(true);
 	const stats = readingTime(post.content);
+
 	const LinkRenderer = ({ href, children }) => {
 		return (
 			<a style={{ color: 'blue' }} href={href} target="_blank" rel="noopener">
@@ -42,9 +43,39 @@ export default function Post({ post }: Post): JSX.Element {
 			</a>
 		);
 	};
+
+	const ImageRenderer = (props) => {
+		return (
+			<img
+				{...props}
+				style={{
+					margin: '1rem 0',
+					maxWidth: '100%',
+				}}
+			/>
+		);
+	};
+
+	const BlockquoteRenderer = ({ children }) => {
+		return (
+			<blockquote
+				style={{
+					color: '#666',
+					margin: 0,
+					paddingLeft: '1em',
+					borderLeft: '0.4em #dadada solid',
+					background: '#f1f1f1',
+				}}
+			>
+				{children}
+			</blockquote>
+		);
+	};
+
 	const changeNavbar = () => {
 		window.scrollY >= 200 ? setNavbar(false) : setNavbar(true);
 	};
+
 	useEffect(() => {
 		window.addEventListener('scroll', changeNavbar);
 		return () => window.removeEventListener('scroll', changeNavbar);
@@ -86,8 +117,8 @@ export default function Post({ post }: Post): JSX.Element {
 							<Image
 								src={post.cover.url}
 								alt={post.title}
-								width={500}
-								height={300}
+								width={800}
+								height={500}
 								layout="responsive"
 								className="article-image"
 							/>
@@ -95,7 +126,12 @@ export default function Post({ post }: Post): JSX.Element {
 						<motion.div variants={fadeInUp}>
 							<ReactMarkdown
 								className="content"
-								renderers={{ link: LinkRenderer, code: CodeBlock }}
+								renderers={{
+									link: LinkRenderer,
+									code: CodeBlock,
+									image: ImageRenderer,
+									blockquote: BlockquoteRenderer,
+								}}
 							>
 								{post.content}
 							</ReactMarkdown>
@@ -170,14 +206,15 @@ export async function getStaticPaths() {
 		fallback: true,
 		paths: posts.map((post) => ({
 			params: {
-				slug: post.id,
+				slug: post.slug,
 			},
 		})),
 	};
 }
 
 export async function getStaticProps(ctx) {
-	const { post } = await getPostById(ctx.params.slug);
+	const { posts } = await getPostById(ctx.params.slug);
+	const [post] = posts;
 	return {
 		props: {
 			post,

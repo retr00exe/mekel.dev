@@ -57,10 +57,6 @@ const GlobalStyle = createGlobalStyle`
     --navColor: #202020;
     --navHoverColor: #e200e2;
     --linkColor:#e200e2;
-
-
-
-
 }
 
   .active {

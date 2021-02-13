@@ -7,12 +7,13 @@ import { formatDate } from '../utils/date';
 
 interface Props {
 	post: {
+		id: string;
+		title: string;
+		slug: string;
 		content: string;
 		cover: {
 			url: string;
 		};
-		id: string;
-		title: string;
 		date?: Date;
 	};
 }
@@ -31,7 +32,7 @@ const Cards: React.FC<Props> = ({ post }) => {
 				/>
 				<div className="card-content">
 					<div className="content-header">
-						<Link href={`/post/${encodeURIComponent(post.id)}`}>
+						<Link href={`/post/${encodeURIComponent(post.slug)}`}>
 							<h2>{post.title}</h2>
 						</Link>
 						<p>{sliceText(post.content, 120)}</p>

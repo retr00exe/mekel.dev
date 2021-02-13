@@ -9,6 +9,7 @@ export const getAllPosts = () => {
 			posts(sort: "date:desc") {
 				id
 				title
+				slug
 				content
 				cover {
 					url
@@ -20,10 +21,10 @@ export const getAllPosts = () => {
 	return client.request(query);
 };
 
-export const getPostById = (postId) => {
+export const getPostById = (slug) => {
 	const query = gql`
 		{
-			post(id:"${postId}") {
+			posts(where: { slug: "${slug}" }) {
 				id
 				title
 				content

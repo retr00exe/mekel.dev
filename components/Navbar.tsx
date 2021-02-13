@@ -28,6 +28,7 @@ const Navbar: React.FC<Props> = (props) => {
 							onClick={() =>
 								window.scroll({ top: 0, left: 0, behavior: 'smooth' })
 							}
+							style={{ overflow: 'hidden' }}
 						>
 							{props.title}
 						</p>
