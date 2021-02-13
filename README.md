@@ -32,3 +32,24 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Bugs 🐞
+
+- [ ] Error when bad user open route that not listed by getStaticPath() method on /post/[slug].tsx
+- [ ] Navbar logo and darkmode toogle unresponsive on small devices. Can be solved by specifying the correct padding and margin or make flexbox container (I think)
+- [ ] Lighthouse performance bug caused by next/Image (Ref: [Lighthouse](https://github.com/GoogleChrome/lighthouse/issues/11631) & [Next.js](https://github.com/vercel/next.js/issues/20611))
+
+## To Do List 👀
+
+- [x] Change data fetching method using GraphQL
+- [x] Add dark mode and animation
+- [ ] Add Disqus API for comment section
+- [ ] Add readmore at the end of the post
+- [ ] Add portfolio page
+- [ ] Add custom loading spinner
+- [ ] Improve SEO & best practice
+- [ ] Reach perfect score on lighthouse
+- [ ] Add custom 404 error and 500 error
+- [ ] Test some **possible** security vulnerabilities using ZAP & BurpSuite
+- [ ] Add typescript interfaces to prevent future bug
+- [ ] Add <code> tag renderer for `react-markdown`
