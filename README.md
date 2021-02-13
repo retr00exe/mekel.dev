@@ -52,4 +52,4 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 - [ ] Add custom 404 error and 500 error
 - [ ] Test some **possible** security vulnerabilities using ZAP & BurpSuite
 - [ ] Add typescript interfaces to prevent future bug
-- [ ] Add <code> tag renderer for `react-markdown`
+- [ ] Add code tag renderer for `react-markdown`
