@@ -39,7 +39,7 @@ export default class MyDocument extends Document {
 				<Head>
 					<meta
 						name="google-site-verification"
-						content="Gbkey8UUDu2UPB5NCX3TJxnn26frejtjawEpfoQro54"
+						content="FxUzKQItSGogZl9uidDBbvYi58mSK49aDSMobEhj52U"
 					/>
 					<meta name="robots" content="index, follow" />
 					<meta name="author" content="Mekel Ilyasa" />
