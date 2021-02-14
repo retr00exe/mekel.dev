@@ -37,6 +37,10 @@ export default class MyDocument extends Document {
 		return (
 			<Html lang="id">
 				<Head>
+					<meta
+						name="google-site-verification"
+						content="Gbkey8UUDu2UPB5NCX3TJxnn26frejtjawEpfoQro54"
+					/>
 					<meta charSet="utf-8" />
 					<meta name="description" content="Mekel Ilyasa personal blog" />
 					<meta name="locale" content="id" />

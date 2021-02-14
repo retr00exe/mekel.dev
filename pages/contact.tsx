@@ -7,7 +7,7 @@ const Contact: React.FC = () => {
 	return (
 		<>
 			<Head>
-				<title>Contact</title>
+				<title>Contact | Mekel Ilyasa Personal Blog</title>
 				<link rel="icon" href="/favicon.ico" />
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 			</Head>

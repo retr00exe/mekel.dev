@@ -84,7 +84,7 @@ export default function Post({ post }: Post): JSX.Element {
 	return (
 		<>
 			<Head>
-				<title>{post.title}</title>
+				<title>{post.title} | Mekel Ilyasa Personal Blog</title>
 				<link rel="icon" href="/favicon.ico" />
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 			</Head>

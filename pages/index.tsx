@@ -11,7 +11,7 @@ export default function Home({ posts }) {
 	return (
 		<>
 			<Head>
-				<title>Home</title>
+				<title>Home | Mekel Ilyasa Personal Blog</title>
 				<link rel="icon" href="/favicon.ico" />
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 			</Head>
