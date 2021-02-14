@@ -41,7 +41,7 @@ const GlobalStyle = createGlobalStyle`
     --colorPrimary:rgba(31, 41, 55, 1);
     --colorSecondary: rgba(55, 65, 81, 1);
     --colorTertiary: rgba(75, 85, 99, 1);
-    --colorQuarternary: rgba(156, 163, 175, 1);
+    --colorQuarternary: rgba(112, 112, 112, 1);
     --navColor: #fff;
     --navHoverColor: #673ab7;
     --linkColor:#0000cc;

@@ -47,7 +47,8 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 - [ ] Add readmore at the end of the post
 - [ ] Add portfolio page
 - [ ] Add custom loading spinner
-- [ ] Improve SEO & best practice
+- [ ] Improve SEO
+- [ ] Improve best practice
 - [ ] Reach perfect score on lighthouse
 - [ ] Add custom 404 error and 500 error
 - [ ] Test some **possible** security vulnerabilities using ZAP & BurpSuite

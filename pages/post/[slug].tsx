@@ -17,6 +17,7 @@ interface Post {
 	post: {
 		title: string;
 		content: string;
+		slug: string;
 		cover: {
 			name?: string;
 			url: string;
@@ -87,6 +88,26 @@ export default function Post({ post }: Post): JSX.Element {
 				<title>{post.title} | Mekel Ilyasa Personal Blog</title>
 				<link rel="icon" href="/favicon.ico" />
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+				<meta property="og:type" content="article" />
+				<meta property="og:title" content={post.title} />
+				<meta property="og:image" content={post.cover.url} />
+				<meta
+					property="og:url"
+					content={`https://mekelilyasa.now.sh/post/${post.slug}`}
+				/>
+				<meta property="og:site_name" content="Mekel Ilyasa Personal Blog" />
+
+				<meta name="twitter:type" content="article" />
+				<meta name="twitter:title" content={post.title} />
+				<meta name="twitter:image" content={post.cover.url} />
+				<meta
+					name="twitter:url"
+					content={`https://mekelilyasa.now.sh/post/${post.slug}`}
+				/>
+				<meta name="twitter:site_name" content="Mekel Ilyasa Personal Blog" />
+				<meta name="twitter:site" content="@mekelilyasa3" />
+				<meta name="twitter:creator" content="@mekelilyasa3" />
 			</Head>
 			{navbar ? <Navbar /> : <Navbar active title={post.title} />}
 			<motion.div exit={{ opacity: 0 }} initial="initial" animate="animate">
@@ -98,7 +119,7 @@ export default function Post({ post }: Post): JSX.Element {
 								<div className="content-header">
 									<Image
 										src="https://avatars.githubusercontent.com/u/55347344?s=460&u=f5b39bf3ba4461a448a4ea15d6bd28fc6b7b4337&v=4"
-										alt=""
+										alt="GitHub Profile"
 										width={50}
 										height={50}
 										className="profile-image"
@@ -187,7 +208,7 @@ const PostWrapper = styled.div`
 					}
 				}
 				.readtime {
-					color: rgba(156, 163, 175, 1);
+					color: var(--colorQuarternary);
 					text-transform: capitalize;
 				}
 			}

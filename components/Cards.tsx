@@ -25,7 +25,7 @@ const Cards: React.FC<Props> = ({ post }) => {
 			<div className="card-container">
 				<Image
 					src={post.cover.url}
-					alt="Hello"
+					alt="Card Image"
 					width={500}
 					height={400}
 					className="cover-image"
@@ -41,7 +41,7 @@ const Cards: React.FC<Props> = ({ post }) => {
 						<div className="content-footer">
 							<Image
 								src="https://avatars.githubusercontent.com/u/55347344?s=460&u=f5b39bf3ba4461a448a4ea15d6bd28fc6b7b4337&v=4"
-								alt=""
+								alt="GitHub Profiles"
 								width={50}
 								height={50}
 								className="profile-image"
@@ -138,7 +138,7 @@ const CardWrapper = styled.div`
 					}
 				}
 				.readtime {
-					color: rgba(156, 163, 175, 1);
+					color: var(--colorQuarternary);
 					text-transform: capitalize;
 				}
 			}

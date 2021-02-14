@@ -41,9 +41,14 @@ export default class MyDocument extends Document {
 						name="google-site-verification"
 						content="Gbkey8UUDu2UPB5NCX3TJxnn26frejtjawEpfoQro54"
 					/>
-					<meta charSet="utf-8" />
-					<meta name="description" content="Mekel Ilyasa personal blog" />
+					<meta name="robots" content="index, follow" />
+					<meta name="author" content="Mekel Ilyasa" />
+					<meta
+						name="description"
+						content="Mekel Ilyasa personal blog berisi tentang opini dan cerita mengenai pengalam pribadi penulis serta pandangan mengenai perkembangan dunia teknologi dan sains"
+					/>
 					<meta name="locale" content="id" />
+					<link rel="icon" href="/favicon.ico" />
 				</Head>
 				<body>
 					<Main />

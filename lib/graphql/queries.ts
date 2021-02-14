@@ -27,6 +27,7 @@ export const getPostById = (slug) => {
 			posts(where: { slug: "${slug}" }) {
 				id
 				title
+				slug
 				content
 				cover {
 					url
