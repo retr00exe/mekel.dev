@@ -129,7 +129,7 @@ export default function Post({ post }: Post): JSX.Element {
 						<DiscussionEmbed
 							shortname="mekelilyasa"
 							config={{
-								url: `http://localhost:3000/post/${post.slug}`,
+								url: `https://mekelilyasa.now.sh/post/${post.slug}`,
 								identifier: post.slug,
 								title: post.title,
 							}}

@@ -32,6 +32,8 @@ class AboutContent extends Component {
 							skills: this.skills,
 						}}
 						msg="Hi! Welcome to about page - Type 'help' to list all supported commands"
+						closedTitle=""
+						closedMessage="Click on the icon to reopen"
 					/>
 				</div>
 			</AboutWrapper>

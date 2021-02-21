@@ -39,6 +39,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 - [ ] Navbar logo and darkmode toogle unresponsive on small devices. Can be solved by specifying the correct padding and margin or make flexbox container (I think)
 - [ ] Lighthouse performance bug caused by next/Image (Ref: [Lighthouse](https://github.com/GoogleChrome/lighthouse/issues/11631) & [Next.js](https://github.com/vercel/next.js/issues/20611))
 - [ ] Translating the page using Microsoft Edge causing card to overflow (`pages/index.tsx`)
+- [ ] `terminal-in-react@4.3.1` can't provide TypeScript props to component
 
 ## To Do List 👀
 
