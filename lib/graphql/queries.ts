@@ -3,7 +3,7 @@ import { GraphQLClient, gql } from 'graphql-request';
 
 const client = new GraphQLClient(process.env.NEXT_PUBLIC_STRAPI_GRAPHQL_URL);
 
-export const getAllPosts = () => {
+export const getAllPosts: () => Promise<any> = () => {
 	const query = gql`
 		{
 			posts(sort: "date:desc") {
@@ -21,7 +21,7 @@ export const getAllPosts = () => {
 	return client.request(query);
 };
 
-export const getPostById = (slug) => {
+export const getPostById: (slug: string) => Promise<any> = (slug) => {
 	const query = gql`
 		{
 			posts(where: { slug: "${slug}" }) {

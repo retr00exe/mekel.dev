@@ -45,6 +45,8 @@ const GlobalStyle = createGlobalStyle`
     --navColor: #fff;
     --navHoverColor: #673ab7;
     --linkColor:#0000cc;
+    -quoteBackground: rgba(243, 244, 246, 1);
+    --border: rgba(218,218,218,1)
 }
 
   [data-theme='dark'] {
@@ -57,6 +59,9 @@ const GlobalStyle = createGlobalStyle`
     --navColor: #202020;
     --navHoverColor: #e200e2;
     --linkColor:#e200e2;
+    --quoteBackground: #3b3b3b;
+    --border: #6b6b6b
+
 }
 
   .active {

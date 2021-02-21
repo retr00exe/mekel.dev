@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import styled from 'styled-components';
 import readingTime from 'reading-time';
-import { sliceText } from '../utils/card';
+import { sliceText } from '../utils/slice';
 import { formatDate } from '../utils/date';
 
 interface Props {
@@ -62,27 +62,25 @@ const Cards: React.FC<Props> = ({ post }) => {
 };
 
 const CardWrapper = styled.div`
+	margin: 0 auto;
+	max-width: 900px;
 	padding: 1rem 2rem;
+	.card-cover-image {
+		object-fit: cover;
+		width: 426px;
+		height: 240px;
+		@media (max-width: 768px) {
+			width: 350px;
+			height: 260px;
+		}
+	}
 	.card-container {
 		margin: 0 auto;
 		box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
 			0 2px 4px -1px rgba(0, 0, 0, 0.06);
 		border-radius: 0.75rem;
 		overflow: hidden;
-		@media (min-width: 590px) {
-			height: auto;
-			display: flex;
-			flex-direction: row;
-		}
 		@media (min-width: 768px) {
-			width: 80%;
-			height: auto;
-			display: flex;
-			flex-direction: row;
-		}
-		@media (min-width: 1024px) {
-			width: 60%;
-			height: auto;
 			display: flex;
 			flex-direction: row;
 		}

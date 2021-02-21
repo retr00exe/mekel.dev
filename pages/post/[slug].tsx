@@ -4,11 +4,16 @@ import Image from 'next/image';
 import { NextRouter, useRouter } from 'next/router';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import { DiscussionEmbed } from 'disqus-react';
 import ReactMarkdown from 'react-markdown';
 import readingTime from 'reading-time';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
-import CodeBlock from '../../components/CodeBlock';
+import Spinner from '../../components/elements/Spinner';
+import ImageRenderer from '../../components/elements/Image';
+import Anchor from '../../components/elements/Anchor';
+import CodeBlock from '../../components/elements/CodeBlock';
+import BlockQuote from '../../components/elements/BlockQuote';
 import { getPostById, getAllPosts } from '../../lib/graphql/queries';
 import { fadeInUp, stagger } from '../../utils/animate';
 import { formatDate } from '../../utils/date';
@@ -31,47 +36,11 @@ interface Post {
 export default function Post({ post }: Post): JSX.Element {
 	const router: NextRouter = useRouter();
 	if (router.isFallback) {
-		return <div>Loading...</div>;
+		return <Spinner />;
 	}
 
 	const [navbar, setNavbar] = useState<boolean>(true);
 	const stats = readingTime(post.content);
-
-	const LinkRenderer = ({ href, children }) => {
-		return (
-			<a style={{ color: 'blue' }} href={href} target="_blank" rel="noopener">
-				{children}
-			</a>
-		);
-	};
-
-	const ImageRenderer = (props) => {
-		return (
-			<img
-				{...props}
-				style={{
-					margin: '1rem 0',
-					maxWidth: '100%',
-				}}
-			/>
-		);
-	};
-
-	const BlockquoteRenderer = ({ children }) => {
-		return (
-			<blockquote
-				style={{
-					color: '#666',
-					margin: 0,
-					paddingLeft: '1em',
-					borderLeft: '0.4em #dadada solid',
-					background: '#f1f1f1',
-				}}
-			>
-				{children}
-			</blockquote>
-		);
-	};
 
 	const changeNavbar = () => {
 		window.scrollY >= 200 ? setNavbar(false) : setNavbar(true);
@@ -148,15 +117,23 @@ export default function Post({ post }: Post): JSX.Element {
 							<ReactMarkdown
 								className="content"
 								renderers={{
-									link: LinkRenderer,
+									link: Anchor,
 									code: CodeBlock,
 									image: ImageRenderer,
-									blockquote: BlockquoteRenderer,
+									blockquote: BlockQuote,
 								}}
 							>
 								{post.content}
 							</ReactMarkdown>
 						</motion.div>
+						<DiscussionEmbed
+							shortname="mekelilyasa"
+							config={{
+								url: `http://localhost:3000/post/${post.slug}`,
+								identifier: post.slug,
+								title: post.title,
+							}}
+						/>
 					</motion.div>
 				</PostWrapper>
 			</motion.div>

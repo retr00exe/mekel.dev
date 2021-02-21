@@ -38,19 +38,20 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 - [ ] Error when bad user open route that not listed by getStaticPath() method on /post/[slug].tsx
 - [ ] Navbar logo and darkmode toogle unresponsive on small devices. Can be solved by specifying the correct padding and margin or make flexbox container (I think)
 - [ ] Lighthouse performance bug caused by next/Image (Ref: [Lighthouse](https://github.com/GoogleChrome/lighthouse/issues/11631) & [Next.js](https://github.com/vercel/next.js/issues/20611))
+- [ ] Translating the page using Microsoft Edge causing card to overflow (`pages/index.tsx`)
 
 ## To Do List 👀
 
 - [x] Change data fetching method using GraphQL
 - [x] Add dark mode and animation
-- [ ] Add Disqus API for comment section
+- [x] Add Disqus API for comment section
 - [ ] Add readmore at the end of the post
 - [ ] Add portfolio page
-- [ ] Add custom loading spinner
-- [ ] Improve SEO
+- [x] Add custom loading spinner
+- [x] Improve SEO
 - [ ] Improve best practice
 - [ ] Reach perfect score on lighthouse
-- [ ] Add custom 404 error and 500 error
+- [x] Add custom 404 error and 500 error
 - [ ] Test some **possible** security vulnerabilities using ZAP & BurpSuite
-- [ ] Add typescript interfaces to prevent future bug
-- [ ] Add code tag renderer for `react-markdown`
+- [x] Add typescript interfaces to prevent future bug
+- [x] Add code tag renderer for `react-markdown`

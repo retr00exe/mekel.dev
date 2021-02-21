@@ -7,7 +7,7 @@ import Footer from '../components/Footer';
 import { getAllPosts } from '../lib/graphql/queries';
 import { fadeInUp, stagger } from '../utils/animate';
 
-export default function Home({ posts }) {
+export default function Home({ posts }): JSX.Element {
 	return (
 		<>
 			<Head>

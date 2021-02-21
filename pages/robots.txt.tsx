@@ -1,6 +1,6 @@
 import { Component } from 'react';
 
-const getRobots = () => `User-agent: *
+const getRobots: () => string = () => `User-agent: *
 Disallow: /_next/static/
 Sitemap: https://mekelilyasa.now.sh/sitemap.xml
 `;
