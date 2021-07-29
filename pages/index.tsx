@@ -1,3 +1,4 @@
+import React from 'react';
 import Head from 'next/head';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
@@ -7,7 +8,11 @@ import Footer from '../components/Footer';
 import { getAllPosts } from '../lib/graphql/queries';
 import { fadeInUp, stagger } from '../utils/animate';
 
-export default function Home({ posts }): JSX.Element {
+interface Props {
+	posts;
+}
+
+export default function Home({ posts }: Props): JSX.Element {
 	return (
 		<>
 			<Head>
@@ -16,12 +21,7 @@ export default function Home({ posts }): JSX.Element {
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 			</Head>
 			<Navbar />
-			<motion.div
-				exit={{ opacity: 0 }}
-				variants={stagger}
-				initial="initial"
-				animate="animate"
-			>
+			<motion.div exit={{ opacity: 0 }} variants={stagger} initial="initial" animate="animate">
 				<ContentWrapper>
 					{posts.map((post) => (
 						<motion.div key={post.id} variants={fadeInUp}>

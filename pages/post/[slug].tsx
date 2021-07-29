@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import { NextRouter, useRouter } from 'next/router';
@@ -61,19 +61,13 @@ export default function Post({ post }: Post): JSX.Element {
 				<meta property="og:type" content="article" />
 				<meta property="og:title" content={post.title} />
 				<meta property="og:image" content={post.cover.url} />
-				<meta
-					property="og:url"
-					content={`https://mekelilyasa.now.sh/post/${post.slug}`}
-				/>
+				<meta property="og:url" content={`https://mekelilyasa.now.sh/post/${post.slug}`} />
 				<meta property="og:site_name" content="Mekel Ilyasa Personal Blog" />
 
 				<meta name="twitter:type" content="article" />
 				<meta name="twitter:title" content={post.title} />
 				<meta name="twitter:image" content={post.cover.url} />
-				<meta
-					name="twitter:url"
-					content={`https://mekelilyasa.now.sh/post/${post.slug}`}
-				/>
+				<meta name="twitter:url" content={`https://mekelilyasa.now.sh/post/${post.slug}`} />
 				<meta name="twitter:site_name" content="Mekel Ilyasa Personal Blog" />
 				<meta name="twitter:site" content="@mekelilyasa3" />
 				<meta name="twitter:creator" content="@mekelilyasa3" />

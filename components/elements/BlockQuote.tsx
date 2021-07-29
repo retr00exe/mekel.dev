@@ -1,10 +1,11 @@
+import React from 'react';
 import styled from 'styled-components';
 
 interface Props {
 	children: string;
 }
 
-const BlockQuote: React.FC<Props> = ({ children }) => {
+const BlockQuote: React.FC<Props> = ({ children }: Props) => {
 	return <BlockQuoteContainer>{children}</BlockQuoteContainer>;
 };
 

@@ -1,3 +1,4 @@
+import React from 'react';
 import Router from 'next/router';
 import { createGlobalStyle } from 'styled-components';
 import { ThemeProvider } from 'next-themes';
@@ -77,13 +78,18 @@ const GlobalStyle = createGlobalStyle`
 		border-radius: 1rem;
     object-fit: cover;
   }
-  
+
   .profile-image {
     border-radius: 999px;
   }
 `;
 
-export default function App({ Component, pageProps }) {
+interface Props {
+	Component: any;
+	pageProps: any;
+}
+
+export default function App({ Component, pageProps }: Props) {
 	return (
 		<>
 			<GlobalStyle />

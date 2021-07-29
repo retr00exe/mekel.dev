@@ -1,28 +1,19 @@
+import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import {
-	FaGithub,
-	FaLinkedin,
-	FaInstagram,
-	FaFacebookSquare,
-} from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaInstagram, FaFacebookSquare } from 'react-icons/fa';
 import { fadeInUp, stagger } from '../utils/animate';
 
 const Contact: React.FC = () => {
 	return (
-		<motion.div
-			exit={{ opacity: 0 }}
-			variants={stagger}
-			initial="initial"
-			animate="animate"
-		>
+		<motion.div exit={{ opacity: 0 }} variants={stagger} initial="initial" animate="animate">
 			<ContactWrapper>
 				<div className="header">
 					<motion.h1 variants={fadeInUp}>Contact Me</motion.h1>
 					<motion.p variants={fadeInUp}>
 						Hi there, you can reach me by follow my social media or email me at
-						mekelilyasa@live.com. I am quite active at Facebook and Instagram,
-						feel free to leave me a message :)
+						mekelilyasa@live.com. I am quite active at Facebook and Instagram, feel free to leave me
+						a message :)
 					</motion.p>
 				</div>
 				<motion.div variants={fadeInUp} className="icons">
@@ -30,7 +21,7 @@ const Contact: React.FC = () => {
 						href="https://github.com/retr00exe"
 						aria-label="Github"
 						target="_blank"
-						rel="noopener"
+						rel="noopener noreferrer"
 					>
 						<FaGithub className="icon github" />
 					</a>
@@ -38,7 +29,7 @@ const Contact: React.FC = () => {
 						href="https://www.linkedin.com/in/mekelilyasa/"
 						aria-label="Linkedin"
 						target="_blank"
-						rel="noopener"
+						rel="noopener noreferrer"
 					>
 						<FaLinkedin className="icon linkedin" />
 					</a>
@@ -46,7 +37,7 @@ const Contact: React.FC = () => {
 						href="https://www.instagram.com/mekelilyasa/"
 						aria-label="Instagram"
 						target="_blank"
-						rel="noopener"
+						rel="noopener noreferrer"
 					>
 						<FaInstagram className="icon instagram" />
 					</a>
@@ -54,7 +45,7 @@ const Contact: React.FC = () => {
 						href="https://www.facebook.com/mekel.ilyasa/"
 						aria-label="Facebook"
 						target="_blank"
-						rel="noopener"
+						rel="noopener noreferrer"
 					>
 						<FaFacebookSquare className="icon facebook" />
 					</a>
