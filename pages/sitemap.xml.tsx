@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import { getAllPosts } from '../lib/graphql/queries';
+import { getAllPosts } from '@core/graphql/queries';
 
 interface Post {
 	title: string;
@@ -7,7 +7,9 @@ interface Post {
 	date: Date;
 }
 
-const getSitemap: (posts: Post[]) => string = (posts) => `<?xml version="1.0" encoding="utf-8"?>
+const getSitemap: (posts: Post[]) => string = (
+	posts
+) => `<?xml version="1.0" encoding="utf-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://mekelilyasa.now.sh/</loc>

@@ -7,16 +7,16 @@ import { motion } from 'framer-motion';
 import { DiscussionEmbed } from 'disqus-react';
 import ReactMarkdown from 'react-markdown';
 import readingTime from 'reading-time';
-import Navbar from '../../components/Navbar';
-import Footer from '../../components/Footer';
-import Spinner from '../../components/elements/Spinner';
-import ImageRenderer from '../../components/elements/Image';
-import Anchor from '../../components/elements/Anchor';
-import CodeBlock from '../../components/elements/CodeBlock';
-import BlockQuote from '../../components/elements/BlockQuote';
-import { getPostById, getAllPosts } from '../../lib/graphql/queries';
-import { fadeInUp, stagger } from '../../utils/animate';
-import { formatDate } from '../../utils/date';
+import Navbar from '@components/Navbar';
+import Footer from '@components/Footer';
+import Spinner from '@components/elements/Spinner';
+import ImageRenderer from '@components/elements/Image';
+import Anchor from '@components/elements/Anchor';
+import CodeBlock from '@components/elements/CodeBlock';
+import BlockQuote from '@components/elements/BlockQuote';
+import { getPostById, getAllPosts } from '@core/graphql/queries';
+import { fadeInUp, stagger } from '@core/utils/animate';
+import { formatDate } from '@core/utils/date';
 
 interface Post {
 	post: {
@@ -61,13 +61,19 @@ export default function Post({ post }: Post): JSX.Element {
 				<meta property="og:type" content="article" />
 				<meta property="og:title" content={post.title} />
 				<meta property="og:image" content={post.cover.url} />
-				<meta property="og:url" content={`https://mekelilyasa.now.sh/post/${post.slug}`} />
+				<meta
+					property="og:url"
+					content={`https://mekelilyasa.now.sh/post/${post.slug}`}
+				/>
 				<meta property="og:site_name" content="Mekel Ilyasa Personal Blog" />
 
 				<meta name="twitter:type" content="article" />
 				<meta name="twitter:title" content={post.title} />
 				<meta name="twitter:image" content={post.cover.url} />
-				<meta name="twitter:url" content={`https://mekelilyasa.now.sh/post/${post.slug}`} />
+				<meta
+					name="twitter:url"
+					content={`https://mekelilyasa.now.sh/post/${post.slug}`}
+				/>
 				<meta name="twitter:site_name" content="Mekel Ilyasa Personal Blog" />
 				<meta name="twitter:site" content="@mekelilyasa3" />
 				<meta name="twitter:creator" content="@mekelilyasa3" />

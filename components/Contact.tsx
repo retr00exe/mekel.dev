@@ -1,19 +1,29 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaInstagram, FaFacebookSquare } from 'react-icons/fa';
-import { fadeInUp, stagger } from '../utils/animate';
+import {
+	FaGithub,
+	FaLinkedin,
+	FaInstagram,
+	FaFacebookSquare,
+} from 'react-icons/fa';
+import { fadeInUp, stagger } from '@core/utils/animate';
 
 const Contact: React.FC = () => {
 	return (
-		<motion.div exit={{ opacity: 0 }} variants={stagger} initial="initial" animate="animate">
+		<motion.div
+			exit={{ opacity: 0 }}
+			variants={stagger}
+			initial="initial"
+			animate="animate"
+		>
 			<ContactWrapper>
 				<div className="header">
 					<motion.h1 variants={fadeInUp}>Contact Me</motion.h1>
 					<motion.p variants={fadeInUp}>
 						Hi there, you can reach me by follow my social media or email me at
-						mekelilyasa@live.com. I am quite active at Facebook and Instagram, feel free to leave me
-						a message :)
+						mekelilyasa@live.com. I am quite active at Facebook and Instagram,
+						feel free to leave me a message :)
 					</motion.p>
 				</div>
 				<motion.div variants={fadeInUp} className="icons">

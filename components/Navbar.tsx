@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { useTheme } from 'next-themes';
 import { motion } from 'framer-motion';
 import { FiSun, FiMoon } from 'react-icons/fi';
-import { fadeInDown } from '../utils/animate';
+import { fadeInDown } from '@core/utils/animate';
 
 interface Props {
 	active?: boolean;
@@ -17,7 +17,12 @@ const Navbar: React.FC<Props> = (props: Props) => {
 	const { theme, setTheme } = useTheme();
 	return (
 		<NavbarItems>
-			<motion.div exit={{ opacity: 0 }} initial="initial" animate="animate" className="container">
+			<motion.div
+				exit={{ opacity: 0 }}
+				initial="initial"
+				animate="animate"
+				className="container"
+			>
 				{props.active ? (
 					<motion.div variants={fadeInDown}>
 						<p
@@ -43,17 +48,23 @@ const Navbar: React.FC<Props> = (props: Props) => {
 						<motion.ul variants={fadeInDown} className="link-container">
 							<li className="nav-link">
 								<Link href="/">
-									<a className={router.pathname === '/' ? 'active' : ''}>Home</a>
+									<a className={router.pathname === '/' ? 'active' : ''}>
+										Home
+									</a>
 								</Link>
 							</li>
 							<li className="nav-link">
 								<Link href="/about">
-									<a className={router.pathname === '/about' ? 'active' : ''}>About</a>
+									<a className={router.pathname === '/about' ? 'active' : ''}>
+										About
+									</a>
 								</Link>
 							</li>
 							<li className="nav-link">
 								<Link href="/contact">
-									<a className={router.pathname === '/contact' ? 'active' : ''}>Contact</a>
+									<a className={router.pathname === '/contact' ? 'active' : ''}>
+										Contact
+									</a>
 								</Link>
 							</li>
 						</motion.ul>
@@ -81,7 +92,8 @@ const NavbarItems = styled.nav`
 	align-items: center;
 	justify-content: center;
 	z-index: 999;
-	box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+	box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+		0 2px 4px -1px rgba(0, 0, 0, 0.06);
 	transition-duration: 0.6s;
 	transition-timing-function: ease;
 	p {

@@ -2,11 +2,11 @@ import React from 'react';
 import Head from 'next/head';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import Navbar from '../components/Navbar';
-import Cards from '../components/Cards';
-import Footer from '../components/Footer';
-import { getAllPosts } from '../lib/graphql/queries';
-import { fadeInUp, stagger } from '../utils/animate';
+import Navbar from '@components/Navbar';
+import Cards from '@components/Cards';
+import Footer from '@components/Footer';
+import { getAllPosts } from '@core/graphql/queries';
+import { fadeInUp, stagger } from '@core/utils/animate';
 
 interface Props {
 	posts;
@@ -21,7 +21,12 @@ export default function Home({ posts }: Props): JSX.Element {
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 			</Head>
 			<Navbar />
-			<motion.div exit={{ opacity: 0 }} variants={stagger} initial="initial" animate="animate">
+			<motion.div
+				exit={{ opacity: 0 }}
+				variants={stagger}
+				initial="initial"
+				animate="animate"
+			>
 				<ContentWrapper>
 					{posts.map((post) => (
 						<motion.div key={post.id} variants={fadeInUp}>

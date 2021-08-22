@@ -1,12 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { fadeInUp } from '../utils/animate';
+import { fadeInUp } from '@core/utils/animate';
 
 const Footer: React.FC = () => {
 	return (
 		<FooterWrapper>
-			<motion.p exit={{ opacity: 0 }} initial="initial" animate="animate" variants={fadeInUp}>
+			<motion.p
+				exit={{ opacity: 0 }}
+				initial="initial"
+				animate="animate"
+				variants={fadeInUp}
+			>
 				Made with ❤️ using{' '}
 				<a href="https://nextjs.org/" target="_blank" rel="noopener noreferrer">
 					Next.js

@@ -1,8 +1,8 @@
 import React from 'react';
 import Head from 'next/head';
-import Navbar from '../components/Navbar';
-import ContactContent from '../components/Contact';
-import Footer from '../components/Footer';
+import Navbar from '@components/Navbar';
+import ContactContent from '@components/Contact';
+import Footer from '@components/Footer';
 
 const Contact: React.FC = () => {
 	return (

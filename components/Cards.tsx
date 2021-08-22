@@ -3,8 +3,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import styled from 'styled-components';
 import readingTime from 'reading-time';
-import { sliceText } from '../utils/slice';
-import { formatDate } from '../utils/date';
+import { sliceText } from '@core/utils/slice';
+import { formatDate } from '@core/utils/date';
 
 interface Props {
 	post: {
@@ -77,7 +77,8 @@ const CardWrapper = styled.div`
 	}
 	.card-container {
 		margin: 0 auto;
-		box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+		box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+			0 2px 4px -1px rgba(0, 0, 0, 0.06);
 		border-radius: 0.75rem;
 		overflow: hidden;
 		@media (min-width: 768px) {
