@@ -1,4 +1,5 @@
 import React from 'react';
+import Head from 'next/head';
 import Router from 'next/router';
 import { createGlobalStyle } from 'styled-components';
 import { ThemeProvider } from 'next-themes';
@@ -92,6 +93,21 @@ interface Props {
 export default function App({ Component, pageProps }: Props) {
 	return (
 		<>
+			<Head>
+				<meta
+					name="google-site-verification"
+					content="FxUzKQItSGogZl9uidDBbvYi58mSK49aDSMobEhj52U"
+				/>
+				<meta name="locale" content="id" />
+				<link rel="icon" href="/favicon.ico" />
+				<meta name="viewport" content="width=device-width, initial-scale=1" />
+				<meta name="robots" content="index, follow" />
+				<meta name="author" content="Mekel Ilyasa" />
+				<meta
+					name="description"
+					content="Mekel Ilyasa personal blog berisi tentang opini dan cerita mengenai pengalam pribadi penulis serta pandangan mengenai perkembangan dunia teknologi dan sains"
+				/>
+			</Head>
 			<GlobalStyle />
 			<ThemeProvider>
 				<AnimatePresence exitBeforeEnter>

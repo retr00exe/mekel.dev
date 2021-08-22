@@ -1,21 +1,12 @@
 import React from 'react';
-import Head from 'next/head';
-import Navbar from '@components/Navbar';
-import ContactContent from '@components/Contact';
-import Footer from '@components/Footer';
+import MainLayout from '@components/_layout/MainLayout';
+import ContactContent from '@components/contact/Contact';
 
 const Contact: React.FC = () => {
 	return (
-		<>
-			<Head>
-				<title>Contact | Mekel Ilyasa Personal Blog</title>
-				<link rel="icon" href="/favicon.ico" />
-				<meta name="viewport" content="width=device-width, initial-scale=1" />
-			</Head>
-			<Navbar />
+		<MainLayout title="Contact">
 			<ContactContent />
-			<Footer />
-		</>
+		</MainLayout>
 	);
 };
 

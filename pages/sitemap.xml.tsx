@@ -12,29 +12,29 @@ const getSitemap: (posts: Post[]) => string = (
 ) => `<?xml version="1.0" encoding="utf-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://mekelilyasa.now.sh/</loc>
+    <loc>${process.env.NEXT_PUBLIC_HOSTNAME}</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://mekelilyasa.now.sh/about</loc>
+    <loc>${process.env.NEXT_PUBLIC_HOSTNAME}/about</loc>
     <changefreq>yearly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://mekelilyasa.now.sh/contact</loc>
+    <loc>${process.env.NEXT_PUBLIC_HOSTNAME}/contact</loc>
     <changefreq>yearly</changefreq>
     <priority>0.9</priority>
   </url>
   ${posts
 		.map((post) => {
 			return `
-    <url>
-      <loc>https://mekelilyasa.now.sh/posts/${post.slug}</loc>
-      <changefreq>weekly</changefreq>
-      <priority>0.9</priority>
-    </url>
-    `;
+	<url>
+		<loc>${process.env.NEXT_PUBLIC_HOSTNAME}/posts/${post.slug}</loc>
+		<changefreq>weekly</changefreq>
+		<priority>0.9</priority>
+	</url>
+	`;
 		})
 		.join('')}
 </urlset>`;
