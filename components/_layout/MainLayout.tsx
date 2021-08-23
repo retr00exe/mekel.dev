@@ -1,8 +1,8 @@
 import React from 'react';
 import Head from 'next/head';
 import useClearance from '@core/hooks/useClearance';
-import Navbar from '@components/Navbar';
-import Footer from '@components/Footer';
+import Navbar from '@components/navbar';
+import Footer from '@components/footer';
 
 interface Props {
 	children: React.ReactNode;

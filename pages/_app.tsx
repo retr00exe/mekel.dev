@@ -94,19 +94,24 @@ export default function App({ Component, pageProps }: Props) {
 	return (
 		<>
 			<Head>
+				<link rel="icon" href="/favicon.ico" />
+				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
+				<meta charSet="utf-8" />
+				<meta name="locale" content="id" />
 				<meta
 					name="google-site-verification"
-					content="FxUzKQItSGogZl9uidDBbvYi58mSK49aDSMobEhj52U"
+					content={process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION}
 				/>
-				<meta name="locale" content="id" />
-				<link rel="icon" href="/favicon.ico" />
-				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<meta name="robots" content="index, follow" />
 				<meta name="author" content="Mekel Ilyasa" />
 				<meta
 					name="description"
 					content="Mekel Ilyasa personal blog berisi tentang opini dan cerita mengenai pengalam pribadi penulis serta pandangan mengenai perkembangan dunia teknologi dan sains"
 				/>
+				<meta property="og:site_name" content="Mekel Ilyasa Personal Blog" />
+				<meta name="twitter:site_name" content="Mekel Ilyasa Personal Blog" />
+				<meta name="twitter:site" content="@mekelilyasa3" />
+				<meta name="twitter:creator" content="@mekelilyasa3" />
 			</Head>
 			<GlobalStyle />
 			<ThemeProvider>

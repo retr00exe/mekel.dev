@@ -7,33 +7,32 @@ import { getAllPosts } from '@core/graphql/queries';
 import { fadeInUp, stagger } from '@core/utils/animate';
 
 interface Props {
-	posts;
+	posts: any;
 }
 
 const Home: React.FC<Props> = ({ posts }: Props): JSX.Element => {
 	return (
 		<MainLayout title="Home">
-			<motion.div
+			<Cards
+				as={motion.div}
 				exit={{ opacity: 0 }}
 				variants={stagger}
 				initial="initial"
 				animate="animate"
 			>
-				<Cards>
-					{posts.map((post) => (
-						<motion.div key={post.id} variants={fadeInUp}>
-							<Card post={post} key={post.id} />
-						</motion.div>
-					))}
-				</Cards>
-			</motion.div>
+				{posts.map((post) => (
+					<motion.div key={post.id} variants={fadeInUp}>
+						<Card post={post} key={post.id} />
+					</motion.div>
+				))}
+			</Cards>
 		</MainLayout>
 	);
 };
 
 export default Home;
 
-const Cards = styled.div`
+const Cards = styled(motion.div)`
 	background-color: var(--background);
 	padding: 6rem 0 4rem 0;
 	transition-duration: 0.6s;

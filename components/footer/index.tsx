@@ -26,10 +26,8 @@ const Footer: React.FC = () => {
 };
 
 const FooterWrapper = styled.footer`
-	position: fixed;
-	left: 0;
-	bottom: 0;
 	width: 100%;
+	max-height: 1.75rem;
 	margin: 0 auto;
 	font-size: 0.75rem;
 	text-align: center;

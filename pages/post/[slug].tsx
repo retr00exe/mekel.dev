@@ -7,16 +7,16 @@ import { motion } from 'framer-motion';
 import { DiscussionEmbed } from 'disqus-react';
 import ReactMarkdown from 'react-markdown';
 import readingTime from 'reading-time';
-import Navbar from '@components/Navbar';
-import Footer from '@components/Footer';
-import Spinner from '@components/elements/Spinner';
-import ImageRenderer from '@components/elements/Image';
-import Anchor from '@components/elements/Anchor';
-import CodeBlock from '@components/elements/CodeBlock';
-import BlockQuote from '@components/elements/BlockQuote';
+import Navbar from '@components/navbar';
+import Footer from '@components/footer';
+import Spinner from '@components/post/elements/Spinner';
+import ImageRenderer from '@components/post/elements/Image';
+import Anchor from '@components/post/elements/Anchor';
+import CodeBlock from '@components/post/elements/CodeBlock';
+import BlockQuote from '@components/post/elements/BlockQuote';
+import AuthorCard from '@components/_shared/AuthorCard';
 import { getPostById, getAllPosts } from '@core/graphql/queries';
 import { fadeInUp, stagger } from '@core/utils/animate';
-import { formatDate } from '@core/utils/date';
 
 interface Post {
 	post: {
@@ -55,28 +55,22 @@ export default function Post({ post }: Post): JSX.Element {
 		<>
 			<Head>
 				<title>{post.title} | Mekel Ilyasa Personal Blog</title>
-				<link rel="icon" href="/favicon.ico" />
-				<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 				<meta property="og:type" content="article" />
 				<meta property="og:title" content={post.title} />
 				<meta property="og:image" content={post.cover.url} />
 				<meta
 					property="og:url"
-					content={`https://mekelilyasa.now.sh/post/${post.slug}`}
+					content={`${process.env.HOSTNAME}/post/${post.slug}`}
 				/>
-				<meta property="og:site_name" content="Mekel Ilyasa Personal Blog" />
 
 				<meta name="twitter:type" content="article" />
 				<meta name="twitter:title" content={post.title} />
 				<meta name="twitter:image" content={post.cover.url} />
 				<meta
 					name="twitter:url"
-					content={`https://mekelilyasa.now.sh/post/${post.slug}`}
+					content={`${process.env.HOSTNAME}/post/${post.slug}`}
 				/>
-				<meta name="twitter:site_name" content="Mekel Ilyasa Personal Blog" />
-				<meta name="twitter:site" content="@mekelilyasa3" />
-				<meta name="twitter:creator" content="@mekelilyasa3" />
 			</Head>
 			{navbar ? <Navbar /> : <Navbar active title={post.title} />}
 			<motion.div exit={{ opacity: 0 }} initial="initial" animate="animate">
@@ -85,22 +79,12 @@ export default function Post({ post }: Post): JSX.Element {
 						<div className="header-container">
 							<motion.h1 variants={fadeInUp}>{post.title}</motion.h1>
 							<motion.div variants={fadeInUp} className="header">
-								<div className="content-header">
-									<Image
-										src="https://avatars.githubusercontent.com/u/55347344?s=460&u=f5b39bf3ba4461a448a4ea15d6bd28fc6b7b4337&v=4"
-										alt="GitHub Profile"
-										width={50}
-										height={50}
-										className="profile-image"
-									/>
-									<div className="content-profile">
-										<p id="author">Mekel Ilyasa</p>
-										<p id="date">{formatDate(post.date)}</p>
-									</div>
-								</div>
-								<div className="readtime">
-									<p>{stats.text}</p>
-								</div>
+								<AuthorCard
+									name="Mekel Ilyasa"
+									image="https://avatars.githubusercontent.com/u/55347344?s=460&u=f5b39bf3ba4461a448a4ea15d6bd28fc6b7b4337&v=4"
+									date={post.date}
+									readtime={stats.text}
+								/>
 							</motion.div>
 						</div>
 						<motion.div variants={fadeInUp}>
@@ -129,7 +113,7 @@ export default function Post({ post }: Post): JSX.Element {
 						<DiscussionEmbed
 							shortname="mekelilyasa"
 							config={{
-								url: `https://mekelilyasa.now.sh/post/${post.slug}`,
+								url: `${process.env.HOSTNAME}/post/${post.slug}`,
 								identifier: post.slug,
 								title: post.title,
 							}}
@@ -159,35 +143,6 @@ const PostWrapper = styled.div`
 			padding-bottom: 2rem;
 			h1 {
 				color: var(--colorPrimary);
-			}
-			.header {
-				display: flex;
-				flex-direction: row;
-				justify-content: space-between;
-				.content-header {
-					display: flex;
-					align-items: center;
-					.content-profile {
-						margin-left: 1rem;
-						#author {
-							color: var(--colorPrimary);
-							font-size: 0.875rem;
-							line-height: 1.25rem;
-							font-weight: 600;
-							margin: 0;
-						}
-						#date {
-							color: var(--colorTertiary);
-							font-size: 0.875rem;
-							line-height: 1.25rem;
-							margin: 0;
-						}
-					}
-				}
-				.readtime {
-					color: var(--colorQuarternary);
-					text-transform: capitalize;
-				}
 			}
 		}
 		.content {
