@@ -1,9 +1,10 @@
+import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import styled from 'styled-components';
 import readingTime from 'reading-time';
-import { sliceText } from '../utils/slice';
-import { formatDate } from '../utils/date';
+import AuthorCard from '@components/_shared/AuthorCard';
+import { sliceText } from '@core/utils/slice';
 
 interface Props {
 	post: {
@@ -18,7 +19,7 @@ interface Props {
 	};
 }
 
-const Cards: React.FC<Props> = ({ post }) => {
+const Cards: React.FC<Props> = ({ post }: Props) => {
 	const stats = readingTime(post.content);
 	return (
 		<CardWrapper>
@@ -38,22 +39,12 @@ const Cards: React.FC<Props> = ({ post }) => {
 						<p>{sliceText(post.content, 120)}</p>
 					</div>
 					<div className="footer">
-						<div className="content-footer">
-							<Image
-								src="https://avatars.githubusercontent.com/u/55347344?s=460&u=f5b39bf3ba4461a448a4ea15d6bd28fc6b7b4337&v=4"
-								alt="GitHub Profiles"
-								width={50}
-								height={50}
-								className="profile-image"
-							/>
-							<div className="content-profile">
-								<p id="author">Mekel Ilyasa</p>
-								<p id="date">{formatDate(post.date)}</p>
-							</div>
-						</div>
-						<div className="readtime">
-							<p>{stats.text}</p>
-						</div>
+						<AuthorCard
+							name="Mekel Ilyasa"
+							image="https://avatars.githubusercontent.com/u/55347344?s=460&u=f5b39bf3ba4461a448a4ea15d6bd28fc6b7b4337&v=4"
+							date={post.date}
+							readtime={stats.text}
+						/>
 					</div>
 				</div>
 			</div>

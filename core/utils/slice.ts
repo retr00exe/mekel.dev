@@ -1,4 +1,4 @@
-export const sliceText = (text: String, end: number): string => {
+export const sliceText = (text: string, end: number): string => {
 	if (!text) {
 		return '';
 	} else {

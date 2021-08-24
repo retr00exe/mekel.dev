@@ -1,9 +1,11 @@
+import React from 'react';
+import Head from 'next/head';
 import Router from 'next/router';
 import { createGlobalStyle } from 'styled-components';
 import { ThemeProvider } from 'next-themes';
 import { AnimatePresence } from 'framer-motion';
 import NProgress from 'nprogress';
-import '../public/asset/css/nprogress.min.css';
+import '@public/asset/css/nprogress.min.css';
 
 NProgress.configure({
 	minimum: 0.3,
@@ -77,15 +79,40 @@ const GlobalStyle = createGlobalStyle`
 		border-radius: 1rem;
     object-fit: cover;
   }
-  
+
   .profile-image {
     border-radius: 999px;
   }
 `;
 
-export default function App({ Component, pageProps }) {
+interface Props {
+	Component: any;
+	pageProps: any;
+}
+
+export default function App({ Component, pageProps }: Props) {
 	return (
 		<>
+			<Head>
+				<link rel="icon" href="/favicon.ico" />
+				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
+				<meta charSet="utf-8" />
+				<meta name="locale" content="id" />
+				<meta
+					name="google-site-verification"
+					content={process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION}
+				/>
+				<meta name="robots" content="index, follow" />
+				<meta name="author" content="Mekel Ilyasa" />
+				<meta
+					name="description"
+					content="Mekel Ilyasa personal blog berisi tentang opini dan cerita mengenai pengalam pribadi penulis serta pandangan mengenai perkembangan dunia teknologi dan sains"
+				/>
+				<meta property="og:site_name" content="Mekel Ilyasa Personal Blog" />
+				<meta name="twitter:site_name" content="Mekel Ilyasa Personal Blog" />
+				<meta name="twitter:site" content="@mekelilyasa3" />
+				<meta name="twitter:creator" content="@mekelilyasa3" />
+			</Head>
 			<GlobalStyle />
 			<ThemeProvider>
 				<AnimatePresence exitBeforeEnter>

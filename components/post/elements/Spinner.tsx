@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 import Loader from 'react-loader-spinner';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';

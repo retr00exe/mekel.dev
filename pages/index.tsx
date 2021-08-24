@@ -1,41 +1,38 @@
-import Head from 'next/head';
+import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import Navbar from '../components/Navbar';
-import Cards from '../components/Cards';
-import Footer from '../components/Footer';
-import { getAllPosts } from '../lib/graphql/queries';
-import { fadeInUp, stagger } from '../utils/animate';
+import Card from '@components/index/Card';
+import MainLayout from '@components/_layout/MainLayout';
+import { getAllPosts } from '@core/graphql/queries';
+import { fadeInUp, stagger } from '@core/utils/animate';
 
-export default function Home({ posts }): JSX.Element {
+interface Props {
+	posts: any;
+}
+
+const Home: React.FC<Props> = ({ posts }: Props): JSX.Element => {
 	return (
-		<>
-			<Head>
-				<title>Home | Mekel Ilyasa Personal Blog</title>
-				<link rel="icon" href="/favicon.ico" />
-				<meta name="viewport" content="width=device-width, initial-scale=1" />
-			</Head>
-			<Navbar />
-			<motion.div
+		<MainLayout title="Home">
+			<Cards
+				as={motion.div}
 				exit={{ opacity: 0 }}
 				variants={stagger}
 				initial="initial"
 				animate="animate"
 			>
-				<ContentWrapper>
-					{posts.map((post) => (
-						<motion.div key={post.id} variants={fadeInUp}>
-							<Cards post={post} key={post.id} />
-						</motion.div>
-					))}
-				</ContentWrapper>
-			</motion.div>
-			<Footer />
-		</>
+				{posts.map((post) => (
+					<motion.div key={post.id} variants={fadeInUp}>
+						<Card post={post} key={post.id} />
+					</motion.div>
+				))}
+			</Cards>
+		</MainLayout>
 	);
-}
+};
 
-const ContentWrapper = styled.div`
+export default Home;
+
+const Cards = styled(motion.div)`
 	background-color: var(--background);
 	padding: 6rem 0 4rem 0;
 	transition-duration: 0.6s;

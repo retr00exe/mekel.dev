@@ -1,8 +1,9 @@
 import { Component } from 'react';
 
-const getRobots: () => string = () => `User-agent: *
+const getRobots: () => string = () =>
+	`User-agent: *
 Disallow: /_next/static/
-Sitemap: https://mekelilyasa.now.sh/sitemap.xml
+Sitemap: ${process.env.NEXT_PUBLIC_HOSTNAME}/sitemap.xml
 `;
 
 class Sitemap extends Component {

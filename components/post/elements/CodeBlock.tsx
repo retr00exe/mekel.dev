@@ -7,7 +7,7 @@ interface Props {
 	value: any;
 }
 
-const CodeBlock: React.FC<Props> = ({ value }) => {
+const CodeBlock: React.FC<Props> = ({ value }: Props) => {
 	return (
 		<SyntaxHighlighter language="python" style={dracula} wrapLines>
 			{value}
