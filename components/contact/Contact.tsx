@@ -11,64 +11,61 @@ import { fadeInUp, stagger } from '@core/utils/animate';
 
 const Contact: React.FC = () => {
 	return (
-		<motion.div
+		<ContactWrapper
+			as={motion.div}
 			exit={{ opacity: 0 }}
 			variants={stagger}
 			initial="initial"
 			animate="animate"
 		>
-			<ContactWrapper>
-				<div className="header">
-					<motion.h1 variants={fadeInUp}>Contact Me</motion.h1>
-					<motion.p variants={fadeInUp}>
-						Hi there, you can reach me by follow my social media or email me at
-						mekelilyasa@live.com. I am quite active at Facebook and Instagram,
-						feel free to leave me a message :)
-					</motion.p>
-				</div>
-				<motion.div variants={fadeInUp} className="icons">
-					<a
-						href="https://github.com/retr00exe"
-						aria-label="Github"
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						<FaGithub className="icon github" />
-					</a>
-					<a
-						href="https://www.linkedin.com/in/mekelilyasa/"
-						aria-label="Linkedin"
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						<FaLinkedin className="icon linkedin" />
-					</a>
-					<a
-						href="https://www.instagram.com/mekelilyasa/"
-						aria-label="Instagram"
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						<FaInstagram className="icon instagram" />
-					</a>
-					<a
-						href="https://www.facebook.com/mekel.ilyasa/"
-						aria-label="Facebook"
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						<FaFacebookSquare className="icon facebook" />
-					</a>
-				</motion.div>
-			</ContactWrapper>
-		</motion.div>
+			<div className="header">
+				<motion.h1 variants={fadeInUp}>Contact Me</motion.h1>
+				<motion.p variants={fadeInUp}>
+					Hi there, you can reach me by follow my social media or email me at
+					mekelilyasa@live.com. I am quite active at Facebook and Instagram,
+					feel free to leave me a message :)
+				</motion.p>
+			</div>
+			<motion.div variants={fadeInUp} className="icons">
+				<a
+					href="https://github.com/retr00exe"
+					aria-label="Github"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					<FaGithub className="icon github" />
+				</a>
+				<a
+					href="https://www.linkedin.com/in/mekelilyasa/"
+					aria-label="Linkedin"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					<FaLinkedin className="icon linkedin" />
+				</a>
+				<a
+					href="https://www.instagram.com/mekelilyasa/"
+					aria-label="Instagram"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					<FaInstagram className="icon instagram" />
+				</a>
+				<a
+					href="https://www.facebook.com/mekel.ilyasa/"
+					aria-label="Facebook"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					<FaFacebookSquare className="icon facebook" />
+				</a>
+			</motion.div>
+		</ContactWrapper>
 	);
 };
 
-const ContactWrapper = styled.div`
-	height: 100vh;
+const ContactWrapper = styled(motion.div)`
 	padding: 4rem 2rem;
-	background-color: var(--background);
 	display: flex;
 	flex-direction: column;
 	align-items: center;

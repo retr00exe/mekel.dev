@@ -8,7 +8,7 @@ import Spinner from '@components/post/elements/Spinner';
 import Cover from '@components/post/Cover';
 import ContentHeader from '@components/post/ContentHeader';
 import ContentBody from '@components/post/ContentBody';
-import Comment from '@components/post/Comment';
+// import Comment from '@components/post/Comment';
 import { getPostById, getAllPosts } from '@core/graphql/queries';
 import { stagger } from '@core/utils/animate';
 
@@ -58,7 +58,7 @@ export default function Post({ post }: Post): JSX.Element {
 				<ContentHeader post={post} readtime={stats.text} />
 				<Cover post={post} />
 				<ContentBody post={post} />
-				<Comment post={post} />
+				{/* <Comment post={post} /> */}
 			</PostWrapper>
 		</MainLayout>
 	);
@@ -81,6 +81,11 @@ const PostWrapper = styled(motion.div)`
 		h1 {
 			color: var(--colorPrimary);
 		}
+	}
+	.content {
+		color: var(--colorPrimary);
+		text-align: justify;
+		line-height: 1.6;
 	}
 `;
 
