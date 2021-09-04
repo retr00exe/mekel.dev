@@ -61,11 +61,6 @@ const NavbarItems = styled(motion.nav)`
 		align-items: center;
 		justify-content: space-between;
 	}
-	p {
-		font-weight: 500;
-		cursor: pointer;
-		color: var(--colorPrimary);
-	}
 	.theme-toogle {
 		display: flex;
 		align-items: center;
