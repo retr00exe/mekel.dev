@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import styled from 'styled-components';
 import AuthorCard from '@components/_shared/AuthorCard';
 import { fadeInUp } from '@core/utils/animate';
 
@@ -10,7 +11,7 @@ interface Props {
 
 const ContentHeader: React.FC<Props> = ({ post, readtime }: Props): JSX.Element => {
 	return (
-		<div className="header-container">
+		<HeaderWrapper>
 			<motion.h1 variants={fadeInUp}>{post.title}</motion.h1>
 			<motion.div variants={fadeInUp} className="header">
 				<AuthorCard
@@ -20,8 +21,16 @@ const ContentHeader: React.FC<Props> = ({ post, readtime }: Props): JSX.Element 
 					readtime={readtime}
 				/>
 			</motion.div>
-		</div>
+		</HeaderWrapper>
 	);
 };
+
+const HeaderWrapper = styled.div`
+	padding-bottom: 2rem;
+	h1 {
+		color: var(--colorPrimary);
+		font-family: Gotham;
+	}
+`;
 
 export default ContentHeader;

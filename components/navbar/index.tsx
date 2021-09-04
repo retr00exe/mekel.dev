@@ -42,7 +42,7 @@ const Navbar: React.FC = (): JSX.Element => {
 
 const NavbarItems = styled(motion.nav)`
 	width: 100%;
-	height: 4rem;
+	height: 4.5rem;
 	position: fixed;
 	top: 0;
 	background-color: var(--navColor);
@@ -106,6 +106,7 @@ const NavbarItems = styled(motion.nav)`
 			padding: 0 1rem;
 			font-weight: 400;
 			color: var(--colorPrimary);
+			font-size: 1.05rem;
 			&:hover {
 				color: var(--navHoverColor);
 				cursor: pointer;
