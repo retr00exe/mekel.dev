@@ -44,8 +44,9 @@ const GlobalStyle = createGlobalStyle`
     --colorSecondary: rgba(55, 65, 81, 1);
     --colorTertiary: rgba(75, 85, 99, 1);
     --colorQuarternary: rgba(112, 112, 112, 1);
-    --navColor: #fff;
-    --navHoverColor: #673ab7;
+    --navColor: rgba(255, 255, 255, 0.8);
+    --footerColor: rgba(255, 255, 255, 1);
+    --navHoverColor: #e200e2;
     --linkColor:#0000cc;
     -quoteBackground: rgba(243, 244, 246, 1);
     --border: rgba(218,218,218,1)
@@ -58,7 +59,8 @@ const GlobalStyle = createGlobalStyle`
     --colorSecondary:rgba(229, 231, 235, 1);
     --colorTertiary: rgba(209, 213, 219, 1);
     --colorQuarternary: rgba(243, 244, 246, 1);
-    --navColor: #202020;
+    --navColor: rgba(32, 32, 32, 0.5);
+    --footerColor: rgba(32, 32, 32, 1);
     --navHoverColor: #e200e2;
     --linkColor:#e200e2;
     --quoteBackground: #3b3b3b;
@@ -76,7 +78,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .article-image {
-		border-radius: 1rem;
+		border-radius: 1.25rem;
     object-fit: cover;
   }
 

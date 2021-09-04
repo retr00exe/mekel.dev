@@ -13,8 +13,7 @@ const useClearance = (initial: number): ReturnTuple => {
 	const FooterRef = useRef<HTMLElement>(null);
 
 	useEffect(() => {
-		const offset =
-			HeaderRef.current.offsetHeight + FooterRef.current.offsetHeight;
+		const offset = HeaderRef.current.offsetHeight + FooterRef.current.offsetHeight;
 		setClearance(offset);
 	}, [HeaderRef, FooterRef]);
 

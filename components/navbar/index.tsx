@@ -8,90 +8,59 @@ import { FiSun, FiMoon } from 'react-icons/fi';
 import { fadeInDown } from '@core/utils/animate';
 import { navbar } from '@core/data/layout';
 
-interface Props {
-	active?: boolean;
-	title?: string;
-}
-
-const Navbar: React.FC<Props> = ({ active, title }: Props) => {
+const Navbar: React.FC = (): JSX.Element => {
 	const router = useRouter();
 	const { theme, setTheme } = useTheme();
 	return (
-		<NavbarItems
-			as={motion.nav}
-			exit={{ opacity: 0 }}
-			initial="initial"
-			animate="animate"
-			className="container"
-		>
-			{active ? (
-				/**
-				 * Show post title when scrooling
-				 */
-				<motion.div variants={fadeInDown}>
-					<p
-						onClick={() =>
-							window.scroll({
-								top: 0,
-								left: 0,
-								behavior: 'smooth',
-							})
-						}
-						style={{ overflow: 'hidden' }}
-					>
-						{title}
-					</p>
-				</motion.div>
-			) : (
-				/**
-				 * Show default navbar
-				 */
-				<>
-					<motion.span variants={fadeInDown} className="nav-logo">
-						<Link href="/">
-							<a>MKL.</a>
-						</Link>
-					</motion.span>
-					<motion.ul variants={fadeInDown} className="link-container">
-						{navbar.map((page, i) => (
-							<li className="nav-link" key={i}>
-								<Link href={page.href}>
-									<a className={router.pathname === page.href ? 'active' : ''}>
-										{page.title}
-									</a>
-								</Link>
-							</li>
-						))}
-					</motion.ul>
-				</>
-			)}
-			<motion.span
-				variants={fadeInDown}
-				className="theme-toogle"
-				onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-			>
-				{theme === 'light' ? <FiMoon /> : <FiSun />}
-			</motion.span>
+		<NavbarItems as={motion.nav} exit={{ opacity: 0 }} initial="initial" animate="animate">
+			<div className="container">
+				<motion.span variants={fadeInDown} className="nav-logo">
+					<Link href="/">
+						<a>MKL.dev</a>
+					</Link>
+				</motion.span>
+				<motion.ul variants={fadeInDown} className="link-container">
+					{navbar.map((page, i) => (
+						<li className="nav-link" key={i}>
+							<Link href={page.href}>
+								<a className={router.pathname === page.href ? 'active' : ''}>{page.title}</a>
+							</Link>
+						</li>
+					))}
+				</motion.ul>
+				<motion.span
+					variants={fadeInDown}
+					className="theme-toogle"
+					onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+				>
+					{theme === 'light' ? <FiMoon /> : <FiSun />}
+				</motion.span>
+			</div>
 		</NavbarItems>
 	);
 };
 
 const NavbarItems = styled(motion.nav)`
 	width: 100%;
-	height: 3.5rem;
+	height: 4.5rem;
 	position: fixed;
 	top: 0;
 	background-color: var(--navColor);
 	padding: 0 40px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	z-index: 999;
-	box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-		0 2px 4px -1px rgba(0, 0, 0, 0.06);
+	z-index: 100;
 	transition-duration: 0.6s;
-	transition-timing-function: ease;
+	transition-timing-function: ease-in-out;
 	justify-content: space-between;
+	backdrop-filter: blur(20px);
+	.container {
+		height: 100%;
+		width: 100%;
+		max-width: 1000px;
+		margin: 0 auto;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
 	p {
 		font-weight: 500;
 		cursor: pointer;
@@ -118,6 +87,7 @@ const NavbarItems = styled(motion.nav)`
 		color: white;
 		padding: 0.35rem 0.5rem;
 		margin: 0 1rem 0 0;
+		font-family: Gotham;
 		&:hover {
 			background-color: #e200e2;
 			cursor: pointer;
@@ -125,7 +95,7 @@ const NavbarItems = styled(motion.nav)`
 	}
 	.link-container {
 		display: flex;
-		margin-right: auto;
+		margin-left: auto;
 		align-items: center;
 		padding-inline-start: 0 !important;
 		@media (max-width: 768px) {
@@ -136,6 +106,7 @@ const NavbarItems = styled(motion.nav)`
 			padding: 0 1rem;
 			font-weight: 400;
 			color: var(--colorPrimary);
+			font-size: 1.05rem;
 			&:hover {
 				color: var(--navHoverColor);
 				cursor: pointer;

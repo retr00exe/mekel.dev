@@ -73,20 +73,9 @@ const PostWrapper = styled(motion.div)`
 	transition-duration: 0.6s;
 	transition-timing-function: ease;
 	width: 100%;
-	max-width: 800px;
+	max-width: 1000px;
 	padding: 4rem 2rem 2rem 2rem;
 	font-size: 1.15rem;
-	.header-container {
-		padding-bottom: 2rem;
-		h1 {
-			color: var(--colorPrimary);
-		}
-	}
-	.content {
-		color: var(--colorPrimary);
-		text-align: justify;
-		line-height: 1.6;
-	}
 `;
 
 export async function getStaticPaths() {

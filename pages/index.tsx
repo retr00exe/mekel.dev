@@ -12,7 +12,7 @@ interface Props {
 
 const Home: React.FC<Props> = ({ posts }: Props): JSX.Element => {
 	return (
-		<MainLayout title="Home">
+		<MainLayout title="Blog">
 			<Cards
 				as={motion.div}
 				exit={{ opacity: 0 }}
