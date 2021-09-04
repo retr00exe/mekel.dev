@@ -13,7 +13,7 @@ interface Props {
 	navbar?: boolean;
 }
 
-const DynamicLayout = ({ children, title, post, navbar }: Props): JSX.Element => {
+const DynamicLayout = ({ children, title, post }: Props): JSX.Element => {
 	const [clearance, HeaderRef, FooterRef] = useClearance(0);
 
 	return (
@@ -49,7 +49,9 @@ const DynamicLayout = ({ children, title, post, navbar }: Props): JSX.Element =>
 					content={post ? `${process.env.HOSTNAME}/post/${post.slug}` : `${process.env.HOSTNAME}`}
 				/>
 			</Head>
-			<header ref={HeaderRef}>{navbar ? <Navbar active title={post.title} /> : <Navbar />}</header>
+			<header ref={HeaderRef}>
+				<Navbar />
+			</header>
 			<Main clearance={clearance} post={post}>
 				{children}
 			</Main>
