@@ -31,7 +31,8 @@ const FooterWrapper = styled(motion.p)`
 	margin: 0 auto;
 	font-size: 0.75rem;
 	text-align: center;
-	background-color: var(--navColor);
+	color: var(--colorPrimary);
+	background-color: var(--footerColor);
 	transition-duration: 0.6s;
 	transition-timing-function: ease;
 	p {

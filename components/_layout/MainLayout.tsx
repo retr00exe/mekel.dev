@@ -13,12 +13,7 @@ interface Props {
 	navbar?: boolean;
 }
 
-const DynamicLayout = ({
-	children,
-	title,
-	post,
-	navbar,
-}: Props): JSX.Element => {
+const DynamicLayout = ({ children, title, post, navbar }: Props): JSX.Element => {
 	const [clearance, HeaderRef, FooterRef] = useClearance(0);
 
 	return (
@@ -26,10 +21,7 @@ const DynamicLayout = ({
 			<Head>
 				{title && <title>{title} — Mekel Ilyasa</title>}
 				<meta property="og:type" content="article" />
-				<meta
-					property="og:title"
-					content={post ? post.title : 'Mekel Ilyasa Personal Blog'}
-				/>
+				<meta property="og:title" content={post ? post.title : 'Mekel Ilyasa Personal Blog'} />
 				<meta
 					property="og:image"
 					content={
@@ -40,17 +32,10 @@ const DynamicLayout = ({
 				/>
 				<meta
 					property="og:url"
-					content={
-						post
-							? `${process.env.HOSTNAME}/post/${post.slug}`
-							: `${process.env.HOSTNAME}`
-					}
+					content={post ? `${process.env.HOSTNAME}/post/${post.slug}` : `${process.env.HOSTNAME}`}
 				/>
 				<meta name="twitter:type" content="article" />
-				<meta
-					name="twitter:title"
-					content={post ? post.title : 'Mekel Ilyasa Personal Blog'}
-				/>
+				<meta name="twitter:title" content={post ? post.title : 'Mekel Ilyasa Personal Blog'} />
 				<meta
 					name="twitter:image"
 					content={
@@ -61,16 +46,10 @@ const DynamicLayout = ({
 				/>
 				<meta
 					name="twitter:url"
-					content={
-						post
-							? `${process.env.HOSTNAME}/post/${post.slug}`
-							: `${process.env.HOSTNAME}`
-					}
+					content={post ? `${process.env.HOSTNAME}/post/${post.slug}` : `${process.env.HOSTNAME}`}
 				/>
 			</Head>
-			<header ref={HeaderRef}>
-				{navbar ? <Navbar active title={post.title} /> : <Navbar />}
-			</header>
+			<header ref={HeaderRef}>{navbar ? <Navbar active title={post.title} /> : <Navbar />}</header>
 			<Main clearance={clearance} post={post}>
 				{children}
 			</Main>
@@ -88,8 +67,7 @@ interface MainProps {
 
 const Main = styled.main<MainProps>`
 	min-height: calc(100vh - ${({ clearance }) => clearance}px);
-	background-color: ${({ post }) =>
-		post ? 'var(--backgroundPost);' : 'var(--background)'};
+	background-color: ${({ post }) => (post ? 'var(--backgroundPost);' : 'var(--background)')};
 	transition-duration: 0.6s;
 	transition-timing-function: ease;
 `;

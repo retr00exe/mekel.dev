@@ -8,10 +8,7 @@ interface Props {
 	readtime: string;
 }
 
-const ContentHeader: React.FC<Props> = ({
-	post,
-	readtime,
-}: Props): JSX.Element => {
+const ContentHeader: React.FC<Props> = ({ post, readtime }: Props): JSX.Element => {
 	return (
 		<div className="header-container">
 			<motion.h1 variants={fadeInUp}>{post.title}</motion.h1>

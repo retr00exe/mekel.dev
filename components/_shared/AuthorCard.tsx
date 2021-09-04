@@ -10,22 +10,11 @@ interface Props {
 	readtime: string;
 }
 
-const AuthorCard: React.FC<Props> = ({
-	name,
-	image,
-	date,
-	readtime,
-}: Props): JSX.Element => {
+const AuthorCard: React.FC<Props> = ({ name, image, date, readtime }: Props): JSX.Element => {
 	return (
 		<AuthorCardWrapper>
 			<div className="content-header">
-				<Image
-					src={image}
-					alt={name}
-					width={50}
-					height={50}
-					className="profile-image"
-				/>
+				<Image src={image} alt={name} width={50} height={50} className="profile-image" />
 				<div className="content-profile">
 					<p id="author">{name}</p>
 					<p id="date">{formatDate(date)}</p>

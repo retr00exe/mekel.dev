@@ -6,12 +6,7 @@ interface Props {
 
 const Anchor: React.FC<Props> = ({ href, children }: Props) => {
 	return (
-		<a
-			style={{ color: 'blue' }}
-			href={href}
-			target="_blank"
-			rel="noopener noreferrer"
-		>
+		<a style={{ color: 'blue' }} href={href} target="_blank" rel="noopener noreferrer">
 			{children}
 		</a>
 	);

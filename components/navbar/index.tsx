@@ -16,7 +16,7 @@ const Navbar: React.FC = (): JSX.Element => {
 			<div className="container">
 				<motion.span variants={fadeInDown} className="nav-logo">
 					<Link href="/">
-						<a>MKL.</a>
+						<a>MKL.dev</a>
 					</Link>
 				</motion.span>
 				<motion.ul variants={fadeInDown} className="link-container">
@@ -51,6 +51,7 @@ const NavbarItems = styled(motion.nav)`
 	transition-duration: 0.6s;
 	transition-timing-function: ease-in-out;
 	justify-content: space-between;
+	backdrop-filter: blur(20px);
 	.container {
 		height: 100%;
 		width: 100%;
@@ -86,6 +87,7 @@ const NavbarItems = styled(motion.nav)`
 		color: white;
 		padding: 0.35rem 0.5rem;
 		margin: 0 1rem 0 0;
+		font-family: Gotham;
 		&:hover {
 			background-color: #e200e2;
 			cursor: pointer;
