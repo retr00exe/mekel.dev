@@ -73,7 +73,7 @@ const PostWrapper = styled(motion.div)`
 	transition-duration: 0.6s;
 	transition-timing-function: ease;
 	width: 100%;
-	max-width: 800px;
+	max-width: 1000px;
 	padding: 4rem 2rem 2rem 2rem;
 	font-size: 1.15rem;
 	.header-container {
@@ -84,8 +84,7 @@ const PostWrapper = styled(motion.div)`
 	}
 	.content {
 		color: var(--colorPrimary);
-		text-align: justify;
-		line-height: 1.6;
+		line-height: 1.9;
 	}
 `;
 
