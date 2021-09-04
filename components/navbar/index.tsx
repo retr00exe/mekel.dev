@@ -5,38 +5,84 @@ import styled from 'styled-components';
 import { useTheme } from 'next-themes';
 import { motion } from 'framer-motion';
 import { FiSun, FiMoon } from 'react-icons/fi';
+import { GiHamburgerMenu } from 'react-icons/gi';
 import { fadeInDown } from '@core/utils/animate';
 import { navbar } from '@core/data/layout';
+import useResize from '@core/hooks/useResize';
 
 const Navbar: React.FC = (): JSX.Element => {
 	const router = useRouter();
 	const { theme, setTheme } = useTheme();
+	const isMobile = useResize().width <= 640;
+
 	return (
 		<NavbarItems as={motion.nav} exit={{ opacity: 0 }} initial="initial" animate="animate">
 			<div className="container">
-				<motion.span variants={fadeInDown} className="nav-logo">
-					<Link href="/">
-						<a>MKL.dev</a>
-					</Link>
-				</motion.span>
-				<motion.ul variants={fadeInDown} className="link-container">
-					{navbar.map((page, i) => (
-						<li className="nav-link" key={i}>
-							<Link href={page.href}>
-								<a className={router.pathname === page.href ? 'active' : ''}>{page.title}</a>
-							</Link>
-						</li>
-					))}
-				</motion.ul>
-				<motion.span
-					variants={fadeInDown}
-					className="theme-toogle"
-					onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-				>
-					{theme === 'light' ? <FiMoon /> : <FiSun />}
-				</motion.span>
+				{!isMobile ? (
+					<NavigationMain router={router} theme={theme} setTheme={setTheme} />
+				) : (
+					<NavigationMobile router={router} theme={theme} setTheme={setTheme} />
+				)}
 			</div>
 		</NavbarItems>
+	);
+};
+
+interface Props {
+	router: {
+		pathname: string;
+	};
+	theme: string;
+	setTheme: (arg0: string) => void;
+}
+
+const NavigationMain = ({ router, theme, setTheme }: Props): JSX.Element => {
+	return (
+		<>
+			<motion.span variants={fadeInDown} className="nav-logo">
+				<Link href="/">
+					<a>MKL.dev</a>
+				</Link>
+			</motion.span>
+			<motion.ul variants={fadeInDown} className="link-container">
+				{navbar.map((page, i) => (
+					<li className="nav-link" key={i}>
+						<Link href={page.href}>
+							<a className={router.pathname === page.href ? 'active' : ''}>{page.title}</a>
+						</Link>
+					</li>
+				))}
+			</motion.ul>
+			<motion.span
+				variants={fadeInDown}
+				className="theme-toogle"
+				onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+			>
+				{theme === 'light' ? <FiMoon /> : <FiSun />}
+			</motion.span>
+		</>
+	);
+};
+
+const NavigationMobile = ({ theme, setTheme }: Props): JSX.Element => {
+	return (
+		<>
+			<motion.span variants={fadeInDown}>
+				<GiHamburgerMenu />
+			</motion.span>
+			<motion.span variants={fadeInDown} className="nav-logo">
+				<Link href="/">
+					<a>MKL.dev</a>
+				</Link>
+			</motion.span>
+			<motion.span
+				variants={fadeInDown}
+				className="theme-toogle"
+				onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+			>
+				{theme === 'light' ? <FiMoon /> : <FiSun />}
+			</motion.span>
+		</>
 	);
 };
 
@@ -68,8 +114,11 @@ const NavbarItems = styled(motion.nav)`
 		background-color: rgba(243, 244, 246, 1);
 		border-radius: 0.4rem;
 		padding: 0.5rem;
-		margin-left: 20px;
+		margin-left: 1.25rem;
 		cursor: pointer;
+		@media (max-width: 768px) {
+			margin-left: 0;
+		}
 	}
 	.nav-logo {
 		display: flex;
@@ -81,7 +130,6 @@ const NavbarItems = styled(motion.nav)`
 		border-radius: 0.25rem;
 		color: white;
 		padding: 0.35rem 0.5rem;
-		margin: 0 1rem 0 0;
 		font-family: Gotham;
 		&:hover {
 			background-color: #e200e2;
