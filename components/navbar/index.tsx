@@ -1,11 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
 import { useTheme } from 'next-themes';
 import { motion } from 'framer-motion';
 import { FiSun, FiMoon } from 'react-icons/fi';
-import { GiHamburgerMenu } from 'react-icons/gi';
 import { fadeInDown } from '@core/utils/animate';
 import { navbar } from '@core/data/layout';
 import useResize from '@core/hooks/useResize';
@@ -65,10 +64,16 @@ const NavigationMain = ({ router, theme, setTheme }: Props): JSX.Element => {
 };
 
 const NavigationMobile = ({ theme, setTheme }: Props): JSX.Element => {
+	const [isOpen, setOpen] = useState<boolean>(false);
+
+	const toogleMenu = () => {
+		setOpen(!isOpen);
+	};
+
 	return (
 		<>
 			<motion.span variants={fadeInDown}>
-				<GiHamburgerMenu />
+				<MenuToogle toogle={toogleMenu} isOpen={isOpen} />
 			</motion.span>
 			<motion.span variants={fadeInDown} className="nav-logo">
 				<Link href="/">
@@ -86,9 +91,58 @@ const NavigationMobile = ({ theme, setTheme }: Props): JSX.Element => {
 	);
 };
 
+interface Toogle {
+	toogle: () => void;
+	isOpen: boolean;
+}
+
+const transition = { duration: 0.3 };
+
+const MenuToogle: React.FC<Toogle> = ({ toogle, isOpen }: Toogle): JSX.Element => {
+	return (
+		<div onClick={toogle}>
+			<svg width="24" height="24" viewBox="0 0 24 24">
+				<Path
+					animate={isOpen ? 'open' : 'closed'}
+					initial={false}
+					variants={{
+						closed: { d: 'M 2 7.5 L 20 7.5', stroke: 'hsl(0, 0%, 18%)' },
+						open: { d: 'M 3 22.5 L 17 7.5', stroke: 'hsl(0, 0%, 18%)' },
+					}}
+					transition={transition}
+				/>
+				<Path
+					d="M 2 15 L 20 15"
+					stroke="hsl(0, 0%, 18%)"
+					animate={isOpen ? 'open' : 'closed'}
+					initial={false}
+					variants={{
+						closed: { opacity: 1 },
+						open: { opacity: 0 },
+					}}
+					transition={transition}
+				/>
+				<Path
+					animate={isOpen ? 'open' : 'closed'}
+					initial={false}
+					variants={{
+						closed: { d: 'M 2 22.5 L 15 22.5', stroke: 'hsl(0, 0%, 18%)' },
+						open: { d: 'M 3 7.5 L 17 22.5', stroke: 'hsl(0, 0%, 18%)' },
+					}}
+					transition={transition}
+				/>
+			</svg>
+		</div>
+	);
+};
+
+const Path = (props): JSX.Element => {
+	return <motion.path fill="transparent" strokeLinecap="round" strokeWidth="3" {...props} />;
+};
+
 const NavbarItems = styled(motion.nav)`
 	width: 100%;
-	height: 4.5rem;
+	height: 4.25rem;
 	position: fixed;
 	top: 0;
 	background-color: var(--navColor);
