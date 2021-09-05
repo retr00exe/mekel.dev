@@ -65,13 +65,12 @@ const GlobalStyle = createGlobalStyle`
     --linkColor:#e200e2;
     --quoteBackground: #3b3b3b;
     --border: #6b6b6b
-
 }
 
   .active {
-			color: var(--navHoverColor);
-			font-weight: 600;
-		}
+		color: var(--navHoverColor);
+		font-weight: 600;
+	}
 
   .cover-image {
     object-fit: cover;
@@ -106,10 +105,7 @@ export default function App({ Component, pageProps }: Props) {
 				/>
 				<meta name="robots" content="index, follow" />
 				<meta name="author" content="Mekel Ilyasa" />
-				<meta
-					name="description"
-					content="Mekel Ilyasa personal blog berisi tentang opini dan cerita mengenai pengalam pribadi penulis serta pandangan mengenai perkembangan dunia teknologi dan sains"
-				/>
+				<meta name="description" content="" />
 				<meta property="og:site_name" content="Mekel Ilyasa Personal Blog" />
 				<meta name="twitter:site_name" content="Mekel Ilyasa Personal Blog" />
 				<meta name="twitter:site" content="@mekelilyasa3" />
