@@ -33,7 +33,7 @@ const Cards: React.FC<Props> = ({ post }: Props) => {
 				/>
 				<div className="card-content">
 					<div className="content-header">
-						<Link href={`/post/${encodeURIComponent(post.slug)}`}>
+						<Link href={`/posts/${encodeURIComponent(post.slug)}`}>
 							<h2>{post.title}</h2>
 						</Link>
 						<p>{sliceText(post.content, 120)}</p>
