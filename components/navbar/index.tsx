@@ -9,23 +9,108 @@ import { fadeInDown } from '@core/utils/animate';
 import { navbar } from '@core/data/layout';
 import useResize from '@core/hooks/useResize';
 
+// TODO: Remove spaghetti code & make code more cleaner :(
+
 const Navbar: React.FC = (): JSX.Element => {
 	const router = useRouter();
 	const { theme, setTheme } = useTheme();
 	const isMobile = useResize().width <= 640;
+	const [isOpen, setOpen] = useState<boolean>(false);
+
+	const toogleMenu = () => {
+		setOpen(!isOpen);
+	};
 
 	return (
-		<NavbarItems as={motion.nav} exit={{ opacity: 0 }} initial="initial" animate="animate">
-			<div className="container">
-				{!isMobile ? (
-					<NavigationMain router={router} theme={theme} setTheme={setTheme} />
-				) : (
-					<NavigationMobile router={router} theme={theme} setTheme={setTheme} />
-				)}
-			</div>
-		</NavbarItems>
+		<>
+			<NavbarItems as={motion.nav} exit={{ opacity: 0 }} initial="initial" animate="animate">
+				<div className="container">
+					{!isMobile ? (
+						<NavigationMain router={router} theme={theme} setTheme={setTheme} />
+					) : (
+						<NavigationMobile
+							router={router}
+							theme={theme}
+							setTheme={setTheme}
+							toogleMenu={toogleMenu}
+							isOpen={isOpen}
+						/>
+					)}
+				</div>
+			</NavbarItems>
+			<MenuScreen isOpen={isOpen} router={router} />
+		</>
 	);
 };
+
+const menuVariants = {
+	open: {
+		transform: 'translateY(0%)',
+	},
+	closed: {
+		transform: 'translateY(-100%)',
+	},
+};
+
+const menuTransition = {
+	type: 'spring',
+	duration: 1,
+	stiffness: 33,
+	delay: 0.1,
+};
+
+interface Menu {
+	router: {
+		pathname: string;
+	};
+	isOpen: boolean;
+}
+
+const MenuScreen: React.FC<Menu> = ({ router, isOpen }: Menu): JSX.Element => {
+	return (
+		<MenuContainer
+			as={motion.div}
+			initial={false}
+			animate={isOpen ? 'open' : 'closed'}
+			variants={menuVariants}
+			transition={menuTransition}
+		>
+			<motion.ul variants={fadeInDown}>
+				{navbar.map((page, i) => (
+					<li className="nav-link" key={i}>
+						<Link href={page.href}>
+							<a className={router.pathname === page.href ? 'active' : ''}>{page.title}</a>
+						</Link>
+					</li>
+				))}
+			</motion.ul>
+		</MenuContainer>
+	);
+};
+
+const MenuContainer = styled(motion.div)`
+	width: 100%;
+	height: 100%;
+	min-height: 100vh;
+	background-color: #fff;
+	position: fixed;
+	top: 0;
+	right: 0;
+	z-index: 10;
+	transform: translateY(-100%);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		font-size: 1.5rem;
+		text-align: center;
+		line-height: 2.5rem;
+	}
+`;
 
 interface Props {
 	router: {
@@ -33,6 +118,8 @@ interface Props {
 	};
 	theme: string;
 	setTheme: (arg0: string) => void;
+	toogleMenu?: () => void;
+	isOpen?: boolean;
 }
 
 const NavigationMain = ({ router, theme, setTheme }: Props): JSX.Element => {
@@ -63,13 +150,7 @@ const NavigationMain = ({ router, theme, setTheme }: Props): JSX.Element => {
 	);
 };
 
-const NavigationMobile = ({ theme, setTheme }: Props): JSX.Element => {
-	const [isOpen, setOpen] = useState<boolean>(false);
-
-	const toogleMenu = () => {
-		setOpen(!isOpen);
-	};
-
+const NavigationMobile = ({ theme, setTheme, toogleMenu, isOpen }: Props): JSX.Element => {
 	return (
 		<>
 			<motion.span variants={fadeInDown}>
