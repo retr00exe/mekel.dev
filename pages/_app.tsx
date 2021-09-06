@@ -46,7 +46,7 @@ const GlobalStyle = createGlobalStyle`
     --colorQuarternary: rgba(112, 112, 112, 1);
     --navColor: rgba(255, 255, 255, 0.8);
     --footerColor: rgba(255, 255, 255, 1);
-    --navHoverColor: #e200e2;
+    --navHoverColor: #c600e2;
     --linkColor:#0000cc;
     -quoteBackground: rgba(243, 244, 246, 1);
     --border: rgba(218,218,218,1)
@@ -61,7 +61,7 @@ const GlobalStyle = createGlobalStyle`
     --colorQuarternary: rgba(243, 244, 246, 1);
     --navColor: rgba(32, 32, 32, 0.5);
     --footerColor: rgba(32, 32, 32, 1);
-    --navHoverColor: #e200e2;
+    --navHoverColor: #c600e2;
     --linkColor:#e200e2;
     --quoteBackground: #3b3b3b;
     --border: #6b6b6b
@@ -105,7 +105,7 @@ export default function App({ Component, pageProps }: Props) {
 				/>
 				<meta name="robots" content="index, follow" />
 				<meta name="author" content="Mekel Ilyasa" />
-				<meta name="description" content="" />
+				<meta name="description" content="Personal blog by Mekel Ilyasa" />
 				<meta property="og:site_name" content="Mekel Ilyasa Personal Blog" />
 				<meta name="twitter:site_name" content="Mekel Ilyasa Personal Blog" />
 				<meta name="twitter:site" content="@mekelilyasa3" />
