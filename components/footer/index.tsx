@@ -1,17 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
-import { fadeInUp } from '@core/utils/animate';
 
 const Footer: React.FC = () => {
 	return (
-		<FooterWrapper
-			as={motion.p}
-			exit={{ opacity: 0 }}
-			initial="initial"
-			animate="animate"
-			variants={fadeInUp}
-		>
+		<FooterWrapper>
 			Made with ❤️ using{' '}
 			<a href="https://nextjs.org/" target="_blank" rel="noopener noreferrer">
 				Next.js
@@ -24,7 +16,7 @@ const Footer: React.FC = () => {
 	);
 };
 
-const FooterWrapper = styled(motion.p)`
+const FooterWrapper = styled.p`
 	width: 100%;
 	max-height: 2.5rem;
 	padding: 0.75rem 0;

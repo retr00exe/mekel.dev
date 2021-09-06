@@ -13,13 +13,7 @@ interface Props {
 const Home: React.FC<Props> = ({ posts }: Props): JSX.Element => {
 	return (
 		<MainLayout title="Blog">
-			<Cards
-				as={motion.div}
-				exit={{ opacity: 0 }}
-				variants={stagger}
-				initial="initial"
-				animate="animate"
-			>
+			<Cards as={motion.div} variants={stagger} initial="initial" animate="animate">
 				{posts.map((post) => (
 					<motion.div key={post.id} variants={fadeInUp}>
 						<Card post={post} key={post.id} />
@@ -35,8 +29,6 @@ export default Home;
 const Cards = styled(motion.div)`
 	background-color: var(--background);
 	padding: 6rem 0 4rem 0;
-	transition-duration: 0.6s;
-	transition-timing-function: ease;
 `;
 
 export async function getStaticProps() {

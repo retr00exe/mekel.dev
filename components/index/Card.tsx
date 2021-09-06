@@ -15,7 +15,7 @@ interface Props {
 		cover: {
 			url: string;
 		};
-		date?: Date;
+		date?: string;
 	};
 }
 
@@ -42,7 +42,7 @@ const Cards: React.FC<Props> = ({ post }: Props) => {
 						<AuthorCard
 							name="Mekel Ilyasa"
 							image="https://avatars.githubusercontent.com/u/55347344?s=460&u=f5b39bf3ba4461a448a4ea15d6bd28fc6b7b4337&v=4"
-							date={post.date}
+							date={new Date(post.date)}
 							readtime={stats.text}
 						/>
 					</div>
@@ -56,15 +56,6 @@ const CardWrapper = styled.div`
 	margin: 0 auto;
 	max-width: 900px;
 	padding: 1rem 2rem;
-	.card-cover-image {
-		object-fit: cover;
-		width: 426px;
-		height: 240px;
-		@media (max-width: 768px) {
-			width: 350px;
-			height: 260px;
-		}
-	}
 	.card-container {
 		margin: 0 auto;
 		border-radius: 0.75rem;
@@ -80,8 +71,6 @@ const CardWrapper = styled.div`
 			display: flex;
 			flex-direction: column;
 			justify-content: space-between;
-			transition-duration: 0.6s;
-			transition-timing-function: ease;
 			.content-header {
 				h2 {
 					color: var(--colorSecondary);
@@ -104,30 +93,6 @@ const CardWrapper = styled.div`
 				display: flex;
 				flex-direction: row;
 				justify-content: space-between;
-				.content-footer {
-					display: flex;
-					align-items: center;
-					.content-profile {
-						margin-left: 1rem;
-						#author {
-							color: var(--colorPrimary);
-							font-size: 0.875rem;
-							line-height: 1.25rem;
-							font-weight: 600;
-							margin: 0;
-						}
-						#date {
-							color: var(--colorTertiary);
-							font-size: 0.875rem;
-							line-height: 1.25rem;
-							margin: 0;
-						}
-					}
-				}
-				.readtime {
-					color: var(--colorQuarternary);
-					text-transform: capitalize;
-				}
 			}
 		}
 	}
