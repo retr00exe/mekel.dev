@@ -6,6 +6,7 @@ import { ThemeProvider } from 'next-themes';
 import { AnimatePresence } from 'framer-motion';
 import NProgress from 'nprogress';
 import '@public/asset/css/nprogress.min.css';
+import '@core/styles/tailwind.css';
 
 NProgress.configure({
 	minimum: 0.3,

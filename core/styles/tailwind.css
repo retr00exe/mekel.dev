@@ -1,0 +1,179 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer components {
+	/* Built in loading state of every button */
+	button[data-loading='true'] {
+		@apply flex-cc;
+	}
+
+	button[data-loading='true'] i.spinner {
+		@apply inline-flex ml-2;
+	}
+
+	.container {
+		@apply w-full max-w-7xl mx-auto;
+	}
+
+	i.spinner {
+		display: none;
+		width: 16px;
+		height: 16px;
+		border: 3px solid;
+		border-color: #fff #fff5 #fff #fff5;
+		border-radius: 50%;
+		animation: spin 1.2s linear infinite;
+	}
+
+	@keyframes spin {
+		0% {
+			transform: rotate(0deg);
+		}
+		100% {
+			transform: rotate(360deg);
+		}
+	}
+
+	.no-scrollbar::-webkit-scrollbar {
+		display: none;
+	}
+
+	.no-scrollbar {
+		-ms-overflow-style: none; /* IE and Edge */
+		scrollbar-width: none; /* Firefox */
+	}
+
+	.work-list-with-title a:nth-child(1),
+	.work-list-with-title a:nth-child(4) {
+		@apply md:col-span-2;
+	}
+
+	.form__input {
+		@apply w-full h-full text-base border border-[#EFEFEF] border-opacity-75 text-[#2D313F] rounded-md outline-none p-4 bg-none z-[1];
+	}
+
+	.form__input:-internal-autofill-selected {
+		@apply bg-transparent;
+	}
+
+	.form-row {
+		@apply relative mb-4;
+	}
+
+	.form-row .form__input + .form__label {
+		@apply absolute left-4 top-3 max-w-full px-1 py-0 bg-white text-[#8B867E] text-lg transition-all duration-300;
+	}
+
+	/*Input focus move up label*/
+	.form__input:focus + .form__label,
+	.form__input:not(:placeholder-shown).form__input:not(:focus) + .form__label,
+	select.form__input + noscript + .form__label,
+	select.form__input + .form__label {
+		@apply z-10 font-medium text-xs -top-2 left-3;
+	}
+
+	.form__input:focus,
+	select.form__input:focus {
+		@apply border-opacity-100;
+	}
+}
+
+@layer utilities {
+	.flex-cc {
+		@apply flex justify-center items-center;
+	}
+	.flex-cs {
+		@apply flex justify-center items-start;
+	}
+	.flex-ce {
+		@apply flex justify-center items-end;
+	}
+
+	.flex-bc {
+		@apply flex justify-between items-center;
+	}
+	.flex-bs {
+		@apply flex justify-between items-start;
+	}
+	.flex-be {
+		@apply flex justify-between items-end;
+	}
+
+	.flex-sc {
+		@apply flex justify-start items-center;
+	}
+	.flex-ss {
+		@apply flex justify-start items-start;
+	}
+	.flex-se {
+		@apply flex justify-start items-end;
+	}
+
+	.flex-ec {
+		@apply flex justify-end items-center;
+	}
+	.flex-es {
+		@apply flex justify-end items-start;
+	}
+	.flex-ee {
+		@apply flex justify-end items-end;
+	}
+
+	.flex-vc {
+		@apply flex justify-evenly items-center;
+	}
+	.flex-vs {
+		@apply flex justify-evenly items-start;
+	}
+	.flex-ve {
+		@apply flex justify-evenly items-end;
+	}
+
+	.flex-ac {
+		@apply flex justify-around items-center;
+	}
+	.flex-as {
+		@apply flex justify-around items-start;
+	}
+	.flex-ae {
+		@apply flex justify-around items-end;
+	}
+
+	.col {
+		@apply flex-col;
+	}
+
+	.full {
+		@apply w-full h-full;
+	}
+	.fullscreen {
+		@apply fixed full inset-0;
+	}
+	.stroked {
+		-webkit-text-stroke: 0.4px;
+	}
+}
+
+@layer base {
+	* {
+		@apply box-border;
+	}
+
+	html,
+	body {
+		@apply font-main m-0 p-0 text-[#2D2A26];
+		scroll-behavior: smooth;
+	}
+
+	a {
+		@apply no-underline;
+	}
+
+	button,
+	input,
+	textarea,
+	select {
+		@apply focus:outline-none;
+	}
+}

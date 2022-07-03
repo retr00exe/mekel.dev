@@ -139,13 +139,13 @@ const NavigationMain = ({ router, theme, setTheme }: Props): JSX.Element => {
 					</li>
 				))}
 			</motion.ul>
-			<motion.span
+			{/* <motion.span
 				variants={fadeInDown}
 				className="theme-toogle"
 				onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
 			>
 				{theme === 'light' ? <FiMoon /> : <FiSun />}
-			</motion.span>
+			</motion.span> */}
 		</>
 	);
 };
@@ -161,13 +161,13 @@ const NavigationMobile = ({ theme, setTheme, toogleMenu, isOpen }: Props): JSX.E
 					<a>MKL.dev</a>
 				</Link>
 			</motion.span>
-			<motion.span
+			{/* <motion.span
 				variants={fadeInDown}
 				className="theme-toogle"
 				onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
 			>
 				{theme === 'light' ? <FiMoon /> : <FiSun />}
-			</motion.span>
+			</motion.span> */}
 		</>
 	);
 };
