@@ -1,6 +1,6 @@
 import React from 'react';
 import MainLayout from '@components/_layout/MainLayout';
-import ContactContent from '@components/contact/Contact';
+import ContactContent from '@components/Contact';
 
 const Contact: React.FC = () => {
 	return (

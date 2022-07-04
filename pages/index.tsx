@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import Card from '@components/index/Card';
+import Card from '@components/Home/Card';
 import MainLayout from '@components/_layout/MainLayout';
 import { getAllPosts } from '@core/graphql/queries';
 import { fadeInUp, stagger } from '@core/utils/animate';
