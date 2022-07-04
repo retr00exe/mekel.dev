@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import styled from 'styled-components';
 import { useTheme } from 'next-themes';
 import { motion } from 'framer-motion';
 import { FiSun, FiMoon } from 'react-icons/fi';
@@ -23,8 +22,13 @@ const Navbar: React.FC = (): JSX.Element => {
 
 	return (
 		<>
-			<NavbarItems as={motion.nav} exit={{ opacity: 0 }} initial="initial" animate="animate">
-				<div className="container">
+			<motion.nav
+				exit={{ opacity: 0 }}
+				initial="initial"
+				animate="animate"
+				className="w-full h-[4.25rem] fixed top-0 bg-[#ffffffcc] px-[40px] z-50 duration-[600ms] ease-in-out justify-between backdrop-blur-lg"
+			>
+				<div className="h-full w-full max-w-[1000px] mx-auto flex-bc">
 					{!isMobile ? (
 						<NavigationMain router={router} theme={theme} setTheme={setTheme} />
 					) : (
@@ -37,26 +41,10 @@ const Navbar: React.FC = (): JSX.Element => {
 						/>
 					)}
 				</div>
-			</NavbarItems>
+			</motion.nav>
 			<MenuScreen isOpen={isOpen} router={router} />
 		</>
 	);
-};
-
-const menuVariants = {
-	open: {
-		transform: 'translateY(0%)',
-	},
-	closed: {
-		transform: 'translateY(-100%)',
-	},
-};
-
-const menuTransition = {
-	type: 'spring',
-	duration: 1,
-	stiffness: 33,
-	delay: 0.1,
 };
 
 interface Menu {
@@ -68,14 +56,14 @@ interface Menu {
 
 const MenuScreen: React.FC<Menu> = ({ router, isOpen }: Menu): JSX.Element => {
 	return (
-		<MenuContainer
-			as={motion.div}
+		<motion.div
 			initial={false}
 			animate={isOpen ? 'open' : 'closed'}
 			variants={menuVariants}
 			transition={menuTransition}
+			className="w-full h-full min-h-[100vh] bg-white fixed top-0 right-0 z-10 flex-cc col translate-y-full"
 		>
-			<motion.ul variants={fadeInDown}>
+			<motion.ul variants={fadeInDown} className="list-none m-0 p-0 text-2xl text-center">
 				{navbar.map((page, i) => (
 					<li className="nav-link" key={i}>
 						<Link href={page.href}>
@@ -84,33 +72,9 @@ const MenuScreen: React.FC<Menu> = ({ router, isOpen }: Menu): JSX.Element => {
 					</li>
 				))}
 			</motion.ul>
-		</MenuContainer>
+		</motion.div>
 	);
 };
-
-const MenuContainer = styled(motion.div)`
-	width: 100%;
-	height: 100%;
-	min-height: 100vh;
-	background-color: #fff;
-	position: fixed;
-	top: 0;
-	right: 0;
-	z-index: 10;
-	transform: translateY(-100%);
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	ul {
-		list-style: none;
-		margin: 0;
-		padding: 0;
-		font-size: 1.5rem;
-		text-align: center;
-		line-height: 2.5rem;
-	}
-`;
 
 interface Props {
 	router: {
@@ -125,27 +89,33 @@ interface Props {
 const NavigationMain = ({ router, theme, setTheme }: Props): JSX.Element => {
 	return (
 		<>
-			<motion.span variants={fadeInDown} className="nav-logo">
+			<motion.span
+				variants={fadeInDown}
+				className="flex-cc uppercase font-medium bg-[#202020] rounded-md text-white px-2 py-1 hover:bg-[#e200e2] hover:cursor-pointer"
+			>
 				<Link href="/">
 					<a>MKL.dev</a>
 				</Link>
 			</motion.span>
-			<motion.ul variants={fadeInDown} className="link-container">
+			<motion.ul variants={fadeInDown} className="flex-cc ml-auto -md:ml-0">
 				{navbar.map((page, i) => (
-					<li className="nav-link" key={i}>
+					<li
+						className="inline-block py-0 px-4 font-normal text-black text-[1.05rem] hover:cursor-pointer hover:text-[#e200e2] -lg:px-2 -lg:py-0"
+						key={i}
+					>
 						<Link href={page.href}>
 							<a className={router.pathname === page.href ? 'active' : ''}>{page.title}</a>
 						</Link>
 					</li>
 				))}
 			</motion.ul>
-			{/* <motion.span
+			<motion.span
 				variants={fadeInDown}
-				className="theme-toogle"
+				className="flex-cc bg-[#f3f4f6] rounded-md p-2 ml-5 cursor-pointer -md:ml-0"
 				onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
 			>
 				{theme === 'light' ? <FiMoon /> : <FiSun />}
-			</motion.span> */}
+			</motion.span>
 		</>
 	);
 };
@@ -156,18 +126,21 @@ const NavigationMobile = ({ theme, setTheme, toogleMenu, isOpen }: Props): JSX.E
 			<motion.span variants={fadeInDown}>
 				<MenuToogle toogle={toogleMenu} isOpen={isOpen} />
 			</motion.span>
-			<motion.span variants={fadeInDown} className="nav-logo">
+			<motion.span
+				variants={fadeInDown}
+				className="flex-cc uppercase font-medium bg-[#202020] rounded-md text-white px-2 py-1 hover:bg-[#e200e2] hover:cursor-pointer"
+			>
 				<Link href="/">
 					<a>MKL.dev</a>
 				</Link>
 			</motion.span>
-			{/* <motion.span
+			<motion.span
 				variants={fadeInDown}
-				className="theme-toogle"
+				className="flex-cc bg-[#f3f4f6] rounded-md p-2 ml-5 cursor-pointer -md:ml-0"
 				onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
 			>
 				{theme === 'light' ? <FiMoon /> : <FiSun />}
-			</motion.span> */}
+			</motion.span>
 		</>
 	);
 };
@@ -176,8 +149,6 @@ interface Toogle {
 	toogle: () => void;
 	isOpen: boolean;
 }
-
-const transition = { duration: 0.3 };
 
 const MenuToogle: React.FC<Toogle> = ({ toogle, isOpen }: Toogle): JSX.Element => {
 	return (
@@ -221,79 +192,22 @@ const Path = (props): JSX.Element => {
 	return <motion.path fill="transparent" strokeLinecap="round" strokeWidth="3" {...props} />;
 };
 
-const NavbarItems = styled(motion.nav)`
-	width: 100%;
-	height: 4.25rem;
-	position: fixed;
-	top: 0;
-	background-color: var(--navColor);
-	padding: 0 40px;
-	z-index: 100;
-	transition-duration: 0.6s;
-	transition-timing-function: ease-in-out;
-	justify-content: space-between;
-	backdrop-filter: blur(20px);
-	.container {
-		height: 100%;
-		width: 100%;
-		max-width: 1000px;
-		margin: 0 auto;
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-	}
-	.theme-toogle {
-		display: flex;
-		align-items: center;
-		font-size: 1rem;
-		background-color: rgba(243, 244, 246, 1);
-		border-radius: 0.4rem;
-		padding: 0.5rem;
-		margin-left: 1.25rem;
-		cursor: pointer;
-		@media (max-width: 768px) {
-			margin-left: 0;
-		}
-	}
-	.nav-logo {
-		display: flex;
-		align-items: center;
-		font-size: 1rem;
-		text-transform: uppercase;
-		font-weight: 500;
-		background-color: #202020;
-		border-radius: 0.25rem;
-		color: white;
-		padding: 0.35rem 0.5rem;
-		font-family: Gotham;
-		&:hover {
-			background-color: #e200e2;
-			cursor: pointer;
-		}
-	}
-	.link-container {
-		display: flex;
-		margin-left: auto;
-		align-items: center;
-		padding-inline-start: 0 !important;
-		@media (max-width: 768px) {
-			margin-left: 0;
-		}
-		.nav-link {
-			display: inline-block;
-			padding: 0 1rem;
-			font-weight: 400;
-			color: var(--colorPrimary);
-			font-size: 1.05rem;
-			&:hover {
-				color: var(--navHoverColor);
-				cursor: pointer;
-			}
-			@media (max-width: 1024px) {
-				padding: 0 0.5rem;
-			}
-		}
-	}
-`;
+const menuVariants = {
+	open: {
+		transform: 'translateY(0%)',
+	},
+	closed: {
+		transform: 'translateY(-100%)',
+	},
+};
+
+const menuTransition = {
+	type: 'spring',
+	duration: 1,
+	stiffness: 33,
+	delay: 0.1,
+};
+
+const transition = { duration: 0.3 };
 
 export default Navbar;
