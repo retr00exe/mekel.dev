@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import styled from 'styled-components';
 import ReactMarkdown from 'react-markdown';
 import ImageRenderer from '@components/post/elements/Image';
 import Anchor from '@components/post/elements/Anchor';
@@ -16,7 +15,7 @@ interface Props {
 
 const ContentBody: React.FC<Props> = ({ post }: Props): JSX.Element => {
 	return (
-		<ContentWrapper as={motion.div} variants={fadeInUp}>
+		<motion.div variants={fadeInUp} className="text-[#1f2937] leading-8 -sm:text-justify">
 			<ReactMarkdown
 				className="content"
 				renderers={{
@@ -28,18 +27,8 @@ const ContentBody: React.FC<Props> = ({ post }: Props): JSX.Element => {
 			>
 				{post.content}
 			</ReactMarkdown>
-		</ContentWrapper>
+		</motion.div>
 	);
 };
-
-const ContentWrapper = styled(motion.div)`
-	.content {
-		color: var(--colorPrimary);
-		line-height: 1.9;
-	}
-	@media (max-width: 640px) {
-		text-align: justify;
-	}
-`;
 
 export default ContentBody;

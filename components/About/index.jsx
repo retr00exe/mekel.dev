@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
 import Terminal from 'terminal-in-react';
 
 class AboutContent extends Component {
@@ -12,8 +11,8 @@ class AboutContent extends Component {
 
 	render() {
 		return (
-			<AboutWrapper>
-				<div className="container">
+			<div className="h-[100vh] duration-[600ms] ease">
+				<div className="flex-cc pt-16 pb-24 mt-16 mb-8">
 					<Terminal
 						color="white"
 						backgroundColor="#172A45"
@@ -36,22 +35,9 @@ class AboutContent extends Component {
 						closedMessage="Click on the icon to reopen"
 					/>
 				</div>
-			</AboutWrapper>
+			</div>
 		);
 	}
 }
-
-const AboutWrapper = styled.div`
-	height: 100vh;
-	transition-duration: 0.6s;
-	transition-timing-function: ease;
-	.container {
-		padding: 4rem 0 6rem 0;
-		margin: 4rem 0 2rem 0;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-`;
 
 export default AboutContent;
